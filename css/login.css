@@ -1,0 +1,735 @@
+/*====================================================
+    COMSA v1.0
+    Feuille de style - Page de connexion
+    Créé par Inspecteur Limengo (Pmiller)
+=====================================================*/
+
+/* Police Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Variables */
+:root{
+
+    --primary:#0d6efd;
+    --secondary:#1f2937;
+    --success:#198754;
+    --danger:#dc3545;
+    --warning:#ffc107;
+
+    --white:#ffffff;
+    --light:#f8f9fa;
+
+    --glass:rgba(255,255,255,.18);
+
+    --shadow:
+        0 8px 30px rgba(0,0,0,.18);
+
+}
+
+/* Reset */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* Corps */
+
+body{
+
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+        135deg,
+        #0d6efd,
+        #1d4ed8,
+        #2563eb);
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    color:#fff;
+
+}
+
+/* Animation du fond */
+
+.background-animation{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at top left,
+        rgba(255,255,255,.25),
+        transparent 40%),
+
+        radial-gradient(circle at bottom right,
+        rgba(255,255,255,.18),
+        transparent 35%);
+
+    animation:backgroundMove 12s infinite alternate;
+
+    z-index:-1;
+
+}
+
+@keyframes backgroundMove{
+
+    from{
+
+        transform:scale(1);
+
+
+    }
+
+    to{
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+/*====================================================
+    Carte de connexion
+=====================================================*/
+
+.container{
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.login-card{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:var(--shadow);
+
+    animation:fadeIn 1s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*====================================================
+    Logo
+=====================================================*/
+
+.logo{
+
+    width:120px;
+
+    height:120px;
+
+    object-fit:contain;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    padding:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.20);
+
+}
+
+/*====================================================
+    Titres
+=====================================================*/
+
+.login-card h2{
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.login-card p{
+
+    color:#e9ecef;
+
+}
+
+/*====================================================
+    Champs
+=====================================================*/
+
+.form-label{
+
+    color:#fff;
+
+    font-weight:500;
+
+}
+
+.form-control{
+
+    border-radius:12px;
+
+    height:50px;
+
+    border:none;
+
+    box-shadow:none;
+
+}
+
+.form-control:focus{
+
+    border:2px solid var(--primary);
+
+    box-shadow:0 0 10px rgba(13,110,253,.35);
+
+}
+
+/*====================================================
+    Boutons
+=====================================================*/
+
+.btn-primary{
+
+    height:50px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(13,110,253,.35);
+
+  }
+
+/*====================================================
+    Citation - Sourire du jour - Horloge
+=====================================================*/
+
+.quote-card,
+.joke-card,
+.clock-card{
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    backdrop-filter:blur(10px);
+
+    color:#fff;
+
+}
+
+.quote-title,
+.joke-title{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.quote-title i,
+.joke-title i{
+
+    color:#ffc107;
+
+    margin-right:8px;
+
+}
+
+#dailyQuote,
+#dailyJoke{
+
+    margin:0;
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+.clock-card h4{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+    letter-spacing:2px;
+
+}
+
+#todayDate{
+
+    font-size:15px;
+
+    color:#f1f1f1;
+
+}
+
+/*====================================================
+    Boutons flottants
+=====================================================*/
+
+.floating-buttons{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    z-index:999;
+
+}
+
+.floating-btn{
+
+    width:58px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    font-size:22px;
+
+    transition:.3s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.assistant-btn{
+
+    background:#0d6efd;
+
+}
+
+.theme-btn{
+
+    background:#343a40;
+
+}
+
+.floating-btn:hover{
+
+    transform:scale(1.12);
+
+  }
+
+/*====================================================
+    Assistant COMSA
+=====================================================*/
+
+.assistant-window{
+
+    position:fixed;
+
+    bottom:100px;
+
+    right:25px;
+
+    width:340px;
+
+    background:#ffffff;
+
+    color:#212529;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    display:none;
+
+    animation:fadeAssistant .35s ease;
+
+    z-index:1000;
+
+}
+
+.assistant-window.show{
+
+    display:block;
+
+}
+
+.assistant-header{
+
+    background:#0d6efd;
+
+    color:#fff;
+
+    padding:15px 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-weight:600;
+
+}
+
+.assistant-body{
+
+    padding:20px;
+
+    max-height:350px;
+
+    overflow-y:auto;
+
+}
+
+.assistant-body ul{
+
+    margin-top:10px;
+
+    padding-left:20px;
+
+}
+
+@keyframes fadeAssistant{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*====================================================
+    Notifications
+=====================================================*/
+
+.notification-container{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    z-index:1100;
+
+}
+
+.notification{
+
+    background:#198754;
+
+    color:#fff;
+
+    padding:15px 20px;
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+
+    min-width:280px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+
+    animation:slideNotification .4s ease;
+
+}
+
+@keyframes slideNotification{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(100%);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/*====================================================
+    Barre d'état
+=====================================================*/
+
+.status-bar{
+
+    position:fixed;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    background:rgba(0,0,0,.35);
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:10px;
+
+    font-size:14px;
+
+    backdrop-filter:blur(8px);
+
+  }
+
+/*====================================================
+    Mode sombre
+=====================================================*/
+
+body.dark-mode{
+
+    background:linear-gradient(
+        135deg,
+        #111827,
+        #1f2937,
+        #0f172a
+    );
+
+    color:#f8f9fa;
+
+}
+
+body.dark-mode .login-card{
+
+    background:rgba(17,24,39,.85);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark-mode .quote-card,
+body.dark-mode .joke-card,
+body.dark-mode .clock-card{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+body.dark-mode .assistant-window{
+
+    background:#1f2937;
+
+    color:#ffffff;
+
+}
+
+body.dark-mode .form-control{
+
+    background:#374151;
+
+    color:#ffffff;
+
+    border:1px solid #4b5563;
+
+}
+
+body.dark-mode .form-control::placeholder{
+
+    color:#d1d5db;
+
+}
+
+/*====================================================
+    Footer
+=====================================================*/
+
+.footer{
+
+    color:#ffffff;
+
+    margin-top:40px;
+
+}
+
+.footer hr{
+
+    border-color:rgba(255,255,255,.25);
+
+}
+
+.footer small{
+
+    font-size:13px;
+
+}
+
+/*====================================================
+    Responsive
+=====================================================*/
+
+@media (max-width:992px){
+
+    .login-card{
+
+        padding:30px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .login-card{
+
+        padding:25px;
+
+        border-radius:20px;
+
+    }
+
+    .logo{
+
+        width:90px;
+
+        height:90px;
+
+    }
+
+    .floating-buttons{
+
+        right:15px;
+
+        bottom:15px;
+
+    }
+
+    .assistant-window{
+
+        width:92%;
+
+        right:4%;
+
+        bottom:90px;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .clock-card h4{
+
+        font-size:24px;
+
+    }
+
+    .quote-title,
+    .joke-title{
+
+        font-size:16px;
+
+    }
+
+    .btn-primary{
+
+        font-size:15px;
+
+    }
+
+}
+
+/*====================================================
+    Fin du fichier
+    COMSA v1.0 2026
+
+    Développé pour :
+    Inspection Générale du Travail
+
+    Créé par
+    Inspecteur Limengo (Pmiller)
+
+=====================================================*/
