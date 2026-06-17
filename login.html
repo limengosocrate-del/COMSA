@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>COMSA - Connexion</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/login.css">
+
+    <link rel="icon" href="assets/logo/logo.png">
+
+</head>
+
+<body>
+
+<div class="background-animation"></div>
+
+<div class="container">
+
+    <div class="row justify-content-center align-items-center min-vh-100">
+
+        <div class="col-lg-5 col-md-7">
+
+            <div class="login-card">
+
+                <div class="text-center mb-4">
+
+                    <img src="assets/logo/logo.png"
+                         class="logo mb-3"
+                         alt="Logo COMSA"
+                         width="120">
+
+                    <h2>COMSA</h2>
+
+                    <p class="text-muted">
+                        Contrôle et Organisation Moderne des Services d'Inspection
+                    </p>
+
+                </div>
+
+                <form id="loginForm">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Nom d'utilisateur
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            placeholder="Entrez votre nom d'utilisateur"
+                            required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Mot de passe
+                        </label>
+
+                        <div class="input-group">
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                placeholder="Entrez votre mot de passe"
+                                required>
+
+                            <button
+                                class="btn btn-outline-secondary"
+                                type="button"
+                                id="togglePassword">
+
+                                <i class="fa fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-check mb-3">
+
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="remember">
+
+                        <label
+                            class="form-check-label"
+                            for="remember">
+
+                            Se souvenir de moi
+
+                        </label>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary w-100"
+                        type="submit">
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                        Se connecter
+
+                    </button>
+
+                </form>
+
+                <!-- Citation du jour -->
+                <div class="quote-card mt-4">
+
+                    <div class="quote-title">
+                        <i class="fas fa-quote-left"></i>
+                        Citation du jour
+                    </div>
+
+                    <p id="dailyQuote">
+                        "Le travail bien fait est la meilleure signature d'un inspecteur."
+                    </p>
+
+                </div>
+
+                <!-- Le sourire du jour -->
+                <div class="joke-card mt-3">
+
+                    <div class="joke-title">
+                        <i class="fas fa-face-laugh-beam"></i>
+                        Le sourire du jour
+                    </div>
+
+                    <p id="dailyJoke">
+                        Chargement...
+                    </p>
+
+                </div>
+
+                <!-- Horloge -->
+                <div class="clock-card mt-3 text-center">
+
+                    <h4 id="clock">00:00:00</h4>
+
+                    <span id="todayDate">
+                        Lundi 01 Janvier 2026
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="text-center mt-4">
+
+                <small class="text-light">
+
+                    © 2026 COMSA
+
+                    <br>
+
+                    Contrôle et Organisation Moderne des Services d'Inspection
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> 
+
+<!-- Boutons flottants -->
+<div class="floating-buttons">
+
+    <!-- Assistant COMSA -->
+    <button
+        class="floating-btn assistant-btn"
+        id="assistantBtn"
+        title="Assistant COMSA">
+
+        <i class="fas fa-robot"></i>
+
+    </button>
+
+    <!-- Mode sombre -->
+    <button
+        class="floating-btn theme-btn"
+        id="themeToggle"
+        title="Mode sombre">
+
+        <i class="fas fa-moon"></i>
+
+    </button>
+
+</div>
+
+<!-- Fenêtre Assistant COMSA -->
+<div class="assistant-window" id="assistantWindow">
+
+    <div class="assistant-header">
+
+        <i class="fas fa-robot"></i>
+
+        Assistant COMSA
+
+        <button
+            class="btn-close"
+            id="closeAssistant">
+        </button>
+
+    </div>
+
+    <div class="assistant-body">
+
+        <p>
+
+            👋 Bonjour !
+
+            Bienvenue dans COMSA.
+
+        </p>
+
+        <p>
+
+            Je suis votre assistant intelligent.
+
+        </p>
+
+        <p>
+
+            Je vous accompagnerai pour :
+
+        </p>
+
+        <ul>
+
+            <li>📋 Les inspections</li>
+
+            <li>🏢 Les entreprises</li>
+
+            <li>📄 Les rapports</li>
+
+            <li>📊 Les statistiques</li>
+
+            <li>🏆 Le classement</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- Notifications -->
+<div
+    id="notificationContainer"
+    class="notification-container">
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Scripts COMSA -->
+<script src="config/citations.js"></script>
+<script src="config/jokes.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/login.js"></script>
+
+<!-- Modal : Mot de passe oublié -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="forgotPasswordLabel">
+                    <i class="fas fa-key"></i>
+                    Mot de passe oublié
+                </h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <p>
+                    Veuillez contacter l'administrateur système pour réinitialiser votre mot de passe.
+                </p>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-primary" data-bs-dismiss="modal">
+                    Fermer
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal : À propos -->
+<div class="modal fade" id="aboutModal" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+
+                    COMSA v1.0
+
+                </h5>
+
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <h4 class="text-center mb-4">
+
+                    Contrôle et Organisation Moderne des Services d'Inspection
+
+                </h4>
+
+                <p>
+
+                    COMSA est une plateforme destinée à améliorer la gestion des inspections du travail, le suivi des entreprises, la production des rapports et l'analyse des statistiques.
+
+                </p>
+
+                <hr>
+
+                <h6>Fonctionnalités principales</h6>
+
+                <ul>
+
+                    <li>Gestion des entreprises</li>
+
+                    <li>Gestion des inspecteurs</li>
+
+                    <li>Gestion des inspections</li>
+
+                    <li>Rapports et procès-verbaux</li>
+
+                    <li>Tableau de bord interactif</li>
+
+                    <li>Statistiques en temps réel</li>
+
+                    <li>Assistant COMSA</li>
+
+                    <li>Mode sombre</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Barre d'état -->
+<div id="statusBar" class="status-bar">
+
+    <span id="statusMessage">
+
+        COMSA prêt.
+
+    </span>
+
+</div>
+
+<!-- Pied de page -->
+<footer class="footer text-center py-3">
+
+    <hr>
+
+    <p class="mb-1">
+        <strong>COMSA v1.0</strong>
+    </p>
+
+    <p class="mb-1">
+        Contrôle et Organisation Moderne des Services d'Inspection
+    </p>
+
+    <p class="mb-1">
+        Inspection Générale du Travail - République Démocratique du Congo
+    </p>
+
+    <small class="text-muted">
+        © 2026 Tous droits réservés
+    </small>
+
+    <br>
+
+    <small class="text-primary fw-bold">
+        Créé par Inspecteur Limengo (Pmiller)
+    </small>
+
+</footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("COMSA v1.0 chargé avec succès.");
+
+});
+
+</script>
+
+</body>
+
+</html>
+              
