@@ -104,3 +104,220 @@ document.addEventListener("input", function (e) {
     }
 
 });
+
+/* =====================================================
+   PARTIE 5 : Sauvegarde automatique (LocalStorage)
+===================================================== */
+
+function sauvegarderFiche() {
+
+    const champs = document.querySelectorAll("input, textarea, select");
+
+    champs.forEach(champ => {
+
+        if (champ.id) {
+            localStorage.setItem(champ.id, champ.value);
+        }
+
+    });
+
+}
+
+function chargerFiche() {
+
+    const champs = document.querySelectorAll("input, textarea, select");
+
+    champs.forEach(champ => {
+
+        if (champ.id && localStorage.getItem(champ.id) !== null) {
+            champ.value = localStorage.getItem(champ.id);
+        }
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", chargerFiche);
+
+document.addEventListener("input", sauvegarderFiche);
+
+
+/* =====================================================
+   Bouton Nouvelle fiche
+===================================================== */
+
+function nouvelleFiche() {
+
+    if (!confirm("Créer une nouvelle fiche ? Les données actuelles seront supprimées.")) {
+        return;
+    }
+
+    localStorage.clear();
+
+    location.reload();
+
+}
+
+
+/* =====================================================
+   Bouton Imprimer
+===================================================== */
+
+function imprimerFiche() {
+
+    window.print();
+
+}
+
+
+/* =====================================================
+   Vérification des champs obligatoires
+===================================================== */
+
+function verifierFiche() {
+
+    const obligatoires = [
+        "numeroFiche",
+        "dateVisite",
+        "inspecteur"
+    ];
+
+    for (let id of obligatoires) {
+
+        const champ = document.getElementById(id);
+
+        if (champ && champ.value.trim() === "") {
+
+            alert("Veuillez remplir le champ : " + id);
+
+            champ.focus();
+
+            return false;
+
+        }
+
+    }
+
+    return true;
+
+}
+
+/* =====================================================
+   PARTIE 6 : Enregistrement et Exportation
+===================================================== */
+
+
+/* ===============================
+   Enregistrer
+================================ */
+
+function enregistrerFiche() {
+
+    if (!verifierFiche()) {
+        return;
+    }
+
+    sauvegarderFiche();
+
+    alert("✅ Fiche enregistrée avec succès !");
+
+}
+
+
+/* ===============================
+   Export PDF
+================================ */
+
+function exporterPDF() {
+
+    if (!verifierFiche()) {
+        return;
+    }
+
+    window.print();
+
+}
+
+
+/* ===============================
+   Télécharger en JSON
+================================ */
+
+function telechargerJSON() {
+
+    const donnees = {};
+
+    document.querySelectorAll("input, textarea, select").forEach(champ => {
+
+        if (champ.id) {
+            donnees[champ.id] = champ.value;
+        }
+
+    });
+
+    donnees.signature = "Créé par Inspecteur Limengo (Pmiller)";
+    donnees.dateExport = new Date().toLocaleString();
+
+    const fichier = new Blob(
+        [JSON.stringify(donnees, null, 4)],
+        { type: "application/json" }
+    );
+
+    const lien = document.createElement("a");
+
+    lien.href = URL.createObjectURL(fichier);
+
+    lien.download = "Fiche_Inspection.json";
+
+    lien.click();
+
+}
+
+
+/* ===============================
+   Notification
+================================ */
+
+function afficherMessage(message) {
+
+    const notification = document.createElement("div");
+
+    notification.innerHTML = message;
+
+    notification.style.position = "fixed";
+    notification.style.top = "20px";
+    notification.style.right = "20px";
+    notification.style.background = "#198754";
+    notification.style.color = "#fff";
+    notification.style.padding = "12px 20px";
+    notification.style.borderRadius = "8px";
+    notification.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+    notification.style.zIndex = "9999";
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+
+        notification.remove();
+
+    }, 3000);
+
+}
+
+
+/* ===============================
+   Signature automatique
+================================ */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const signature = document.getElementById("signature");
+
+    if (signature) {
+
+        signature.innerHTML =
+        "Créé par <strong>Inspecteur Limengo (Pmiller)</strong>";
+
+    }
+
+});
