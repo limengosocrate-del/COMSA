@@ -107,3 +107,45 @@ function rechercher() {
         `;
     }
 }
+
+// 🎤 InspecteurBot - Mode vocal
+
+function startVoice() {
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        alert("❌ Votre navigateur ne supporte pas la reconnaissance vocale");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "fr-FR";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    const voiceBtn = document.getElementById("voiceBtn");
+
+    voiceBtn.innerHTML = "🎙️...";
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+
+        const texte = event.results[0][0].transcript;
+
+        document.getElementById("searchInput").value = texte;
+
+        // ⚡ lancer automatiquement la recherche
+        rechercher();
+    };
+
+    recognition.onerror = function() {
+        alert("❌ Erreur de reconnaissance vocale");
+    };
+
+    recognition.onend = function() {
+        voiceBtn.innerHTML = "🎤";
+    };
+        }
