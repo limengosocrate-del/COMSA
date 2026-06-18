@@ -140,3 +140,15 @@ reponse.innerHTML=
 }
 
 }
+
+//==============================
+// MESSAGE D'ACCUEIL
+//==============================
+
+window.onload = function(){
+
+notification("Bienvenue dans InspecteurBot RDC 🚀");
+
+notification("3 inspections sont programmées aujourd'hui.");
+
+}
