@@ -300,3 +300,282 @@ body{
     line-height:1.8;
 
   }
+
+/* ===============================
+   Assistant COMSA
+================================= */
+
+.assistant-button{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#0d6efd;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    transition:all .3s ease;
+
+    z-index:999;
+
+}
+
+.assistant-button:hover{
+
+    transform:scale(1.1);
+
+}
+
+.assistant-window{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:100px;
+
+    width:320px;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+
+    overflow:hidden;
+
+    display:none;
+
+    z-index:999;
+
+}
+
+.assistant-header{
+
+    background:#0d6efd;
+
+    color:#fff;
+
+    padding:15px;
+
+    font-weight:bold;
+
+}
+
+.assistant-body{
+
+    padding:18px;
+
+    line-height:1.7;
+
+    color:#444;
+
+}
+
+/* ===============================
+   Pied de page
+================================= */
+
+.footer{
+
+    margin-top:40px;
+
+    font-size:14px;
+
+    letter-spacing:.3px;
+
+}
+
+.footer strong{
+
+    color:#fff;
+
+}
+
+/* ===============================
+   Animations
+================================= */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card{
+
+    animation:fadeIn .5s ease;
+
+}
+
+/* ===============================
+   Responsive
+================================= */
+
+@media (max-width:992px){
+
+    .sidebar{
+
+        min-height:auto;
+
+    }
+
+    .dashboard-card{
+
+        margin-bottom:20px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .navbar-brand{
+
+        font-size:18px;
+
+    }
+
+    .assistant-window{
+
+        width:90%;
+
+        right:5%;
+
+    }
+
+    .assistant-button{
+
+        width:55px;
+
+        height:55px;
+
+        font-size:24px;
+
+    }
+
+    .table{
+
+        font-size:14px;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .card-header{
+
+        font-size:15px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        margin-bottom:10px;
+
+    }
+
+}
+
+/* ===============================
+   Mode sombre
+================================= */
+
+body.dark-mode{
+
+    background:#121212;
+
+    color:#e4e4e4;
+
+}
+
+body.dark-mode .card{
+
+    background:#1f1f1f;
+
+    color:#fff;
+
+}
+
+body.dark-mode .table{
+
+    color:#fff;
+
+}
+
+body.dark-mode .table tbody tr:hover{
+
+    background:#2c2c2c;
+
+}
+
+body.dark-mode .sidebar{
+
+    background:#111827;
+
+}
+
+body.dark-mode .assistant-window{
+
+    background:#1f1f1f;
+
+    color:#fff;
+
+}
+
+/* ===============================
+   Fin du fichier
+================================= */
+
+/*
+=========================================================
+COMSA v1.0
+
+Fichier : dashboard.css
+
+Inspection Générale du Travail
+
+Créé par :
+Inspecteur Limengo (Pmiller)
+
+© 2026 - Tous droits réservés.
+=========================================================
+*/
