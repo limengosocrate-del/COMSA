@@ -1,581 +1,318 @@
-/*====================================================
-    COMSA v1.0
-    dashboard.css
-
-    Créé par Inspecteur Limengo (Pmiller)
-=====================================================*/
-
-/* ===============================
-   Styles généraux
-================================= */
+/* ==========================
+   INSPECTEURBOT RDC - CSS
+   Créé par Inspecteur Limengo (Pmiller)
+========================== */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
 }
 
 body{
-
-    font-family:Arial, Helvetica, sans-serif;
-
-    background:#f4f6f9;
-
-    color:#333;
-
-    min-height:100vh;
-
+background:#eef3fb;
+display:flex;
+min-height:100vh;
+color:#1f2937;
 }
 
-/* ===============================
-   Barre de navigation
-================================= */
-
-.navbar{
-
-    height:70px;
-
-    box-shadow:0 3px 10px rgba(0,0,0,.15);
-
-}
-
-.navbar-brand{
-
-    font-size:24px;
-
-    font-weight:bold;
-
-}
-
-/* ===============================
-   Barre latérale
-================================= */
+/* ==========================
+SIDEBAR
+========================== */
 
 .sidebar{
-
-    background:#1f2937;
-
-    min-height:calc(100vh - 70px);
-
-    padding-bottom:40px;
-
+width:270px;
+background:linear-gradient(180deg,#003b8f,#0b63d1);
+color:white;
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+overflow:auto;
+box-shadow:5px 0 20px rgba(0,0,0,.2);
 }
 
-.sidebar h5{
-
-    color:#fff;
-
-    letter-spacing:1px;
-
+.logo{
+padding:30px 20px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.15);
 }
 
-.sidebar hr{
-
-    border-color:rgba(255,255,255,.2);
-
+.logo img{
+width:90px;
+margin-bottom:10px;
 }
 
-.sidebar a{
-
-    display:block;
-
-    color:#d1d5db;
-
-    text-decoration:none;
-
-    padding:14px 20px;
-
-    transition:.3s;
-
-    border-left:4px solid transparent;
-
+.logo h2{
+font-size:28px;
 }
 
-.sidebar a:hover{
-
-    background:#374151;
-
-    color:#fff;
-
-    border-left:4px solid #0d6efd;
-
-                               }
-
-/* ===============================
-   Cartes du tableau de bord
-================================= */
-
-.dashboard-card{
-
-    border-radius:15px;
-
-    transition:all .3s ease;
-
-    cursor:pointer;
-
-    background:#fff;
-
+.logo p{
+font-size:13px;
+opacity:.9;
 }
 
-.dashboard-card:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:0 12px 25px rgba(0,0,0,.15);
-
+.sidebar ul{
+list-style:none;
+padding:20px 0;
 }
 
-.dashboard-card i{
-
-    transition:.3s;
-
+.sidebar ul li{
+margin:6px 0;
 }
 
-.dashboard-card:hover i{
-
-    transform:scale(1.15);
-
+.sidebar ul li a{
+display:block;
+padding:15px 25px;
+text-decoration:none;
+color:white;
+font-size:17px;
+transition:.3s;
 }
 
-/* ===============================
-   Cartes Bootstrap
-================================= */
+.sidebar ul li a:hover{
+background:white;
+color:#0056b3;
+border-radius:0 30px 30px 0;
+padding-left:35px;
+}
+
+.sidebar i{
+margin-right:12px;
+width:22px;
+text-align:center;
+}
+
+/* ==========================
+MAIN
+========================== */
+
+.main{
+margin-left:270px;
+width:calc(100% - 270px);
+}
+
+/* ==========================
+TOPBAR
+========================== */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 30px;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:99;
+}
+
+.search input{
+width:450px;
+padding:14px;
+border:none;
+border-radius:30px;
+background:#edf2f7;
+font-size:15px;
+}
+
+.user{
+display:flex;
+align-items:center;
+gap:20px;
+font-weight:bold;
+}
+
+.user i{
+font-size:24px;
+color:#0b63d1;
+cursor:pointer;
+}
+
+/* ==========================
+BANNIÈRE
+========================== */
+
+.igt-banner{
+height:300px;
+background:linear-gradient(rgba(0,54,128,.75),rgba(0,54,128,.75)),
+url("../assets/fond-rdc.jpg") center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.overlay{
+padding:20px;
+}
+
+.logo-transparent{
+width:120px;
+margin-bottom:15px;
+opacity:.95;
+}
+
+.overlay h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.overlay p{
+font-size:20px;
+}
+
+/* ==========================
+CARTES
+========================== */
 
 .card{
-
-    border:none;
-
-    border-radius:15px;
-
+background:white;
+margin:25px;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
 }
 
-.card-header{
-
-    font-weight:bold;
-
-    font-size:17px;
-
+.card:hover{
+transform:translateY(-6px);
 }
 
-/* ===============================
-   Tableau
-================================= */
-
-.table{
-
-    margin-bottom:0;
-
+.card h2{
+color:#004ea8;
+margin-bottom:15px;
 }
 
-.table thead{
-
-    background:#0d6efd;
-
-    color:#fff;
-
+.card ul{
+margin-top:10px;
+padding-left:20px;
 }
 
-.table tbody tr{
-
-    transition:.3s;
-
+.card li{
+margin:8px 0;
 }
 
-.table tbody tr:hover{
+/* ==========================
+GRILLE
+========================== */
 
-    background:#eef5ff;
-
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:20px;
+padding:0 25px;
 }
 
-/* ===============================
-   Boutons
-================================= */
-
-.btn{
-
-    border-radius:10px;
-
-    transition:.3s;
-
-    font-weight:600;
-
+.grid .card{
+margin:0;
 }
 
-.btn:hover{
-
-    transform:translateY(-2px);
-
-  }
-
-/* ===============================
-   Profil utilisateur
-================================= */
-
-#profileFullName{
-
-    font-weight:bold;
-
-    font-size:22px;
-
-    margin-top:10px;
-
+.grid input{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:1px solid #ddd;
+border-radius:10px;
 }
 
-#profileRole{
-
-    font-size:15px;
-
-    color:#6c757d;
-
+.grid button{
+margin-top:15px;
+padding:14px 22px;
+border:none;
+border-radius:10px;
+background:#005ecb;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
 }
 
-/* ===============================
-   Notifications
-================================= */
-
-.list-group-item{
-
-    border:none;
-
-    border-bottom:1px solid #ececec;
-
-    transition:.3s;
-
+.grid button:hover{
+background:#003f91;
 }
 
-.list-group-item:hover{
+/* ==========================
+STATISTIQUES
+========================== */
 
-    background:#f8f9fa;
-
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:25px;
 }
 
-/* ===============================
-   Barres de progression
-================================= */
-
-.progress{
-
-    height:24px;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
+.stats .card{
+margin:0;
+text-align:center;
 }
 
-.progress-bar{
-
-    font-weight:bold;
-
-    font-size:13px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+.stats h3{
+font-size:18px;
+color:#555;
 }
 
-/* ===============================
-   Derniers dossiers
-================================= */
-
-#recentFiles .list-group-item{
-
-    padding:12px 15px;
-
+.stats p{
+font-size:38px;
+font-weight:bold;
+margin-top:15px;
+color:#005ecb;
 }
 
-/* ===============================
-   Activités récentes
-================================= */
+/* ==========================
+FOOTER
+========================== */
 
-#recentActivities{
-
-    min-height:180px;
-
-    color:#555;
-
-    line-height:1.8;
-
-  }
-
-/* ===============================
-   Assistant COMSA
-================================= */
-
-.assistant-button{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:25px;
-
-    width:65px;
-
-    height:65px;
-
-    border-radius:50%;
-
-    background:#0d6efd;
-
-    color:#fff;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
-
-    transition:all .3s ease;
-
-    z-index:999;
-
+footer{
+margin-top:40px;
+padding:25px;
+background:#003b8f;
+color:white;
+text-align:center;
+font-size:15px;
 }
 
-.assistant-button:hover{
+/* ==========================
+RESPONSIVE
+========================== */
 
-    transform:scale(1.1);
+@media(max-width:900px){
 
+.sidebar{
+width:100%;
+height:auto;
+position:relative;
 }
 
-.assistant-window{
-
-    position:fixed;
-
-    right:25px;
-
-    bottom:100px;
-
-    width:320px;
-
-    background:#fff;
-
-    border-radius:15px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.20);
-
-    overflow:hidden;
-
-    display:none;
-
-    z-index:999;
-
+.main{
+margin-left:0;
+width:100%;
 }
 
-.assistant-header{
-
-    background:#0d6efd;
-
-    color:#fff;
-
-    padding:15px;
-
-    font-weight:bold;
-
+.topbar{
+flex-direction:column;
+gap:15px;
 }
 
-.assistant-body{
-
-    padding:18px;
-
-    line-height:1.7;
-
-    color:#444;
-
+.search input{
+width:100%;
 }
 
-/* ===============================
-   Pied de page
-================================= */
-
-.footer{
-
-    margin-top:40px;
-
-    font-size:14px;
-
-    letter-spacing:.3px;
-
+.grid,
+.stats{
+grid-template-columns:1fr;
 }
 
-.footer strong{
-
-    color:#fff;
-
+.overlay h1{
+font-size:28px;
 }
 
-/* ===============================
-   Animations
-================================= */
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(15px);
+.overlay p{
+font-size:16px;
+}
 
     }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-.card{
-
-    animation:fadeIn .5s ease;
-
-}
-
-/* ===============================
-   Responsive
-================================= */
-
-@media (max-width:992px){
-
-    .sidebar{
-
-        min-height:auto;
-
-    }
-
-    .dashboard-card{
-
-        margin-bottom:20px;
-
-    }
-
-}
-
-@media (max-width:768px){
-
-    .navbar-brand{
-
-        font-size:18px;
-
-    }
-
-    .assistant-window{
-
-        width:90%;
-
-        right:5%;
-
-    }
-
-    .assistant-button{
-
-        width:55px;
-
-        height:55px;
-
-        font-size:24px;
-
-    }
-
-    .table{
-
-        font-size:14px;
-
-    }
-
-}
-
-@media (max-width:576px){
-
-    .card-header{
-
-        font-size:15px;
-
-    }
-
-    .btn{
-
-        width:100%;
-
-        margin-bottom:10px;
-
-    }
-
-}
-
-/* ===============================
-   Mode sombre
-================================= */
-
-body.dark-mode{
-
-    background:#121212;
-
-    color:#e4e4e4;
-
-}
-
-body.dark-mode .card{
-
-    background:#1f1f1f;
-
-    color:#fff;
-
-}
-
-body.dark-mode .table{
-
-    color:#fff;
-
-}
-
-body.dark-mode .table tbody tr:hover{
-
-    background:#2c2c2c;
-
-}
-
-body.dark-mode .sidebar{
-
-    background:#111827;
-
-}
-
-body.dark-mode .assistant-window{
-
-    background:#1f1f1f;
-
-    color:#fff;
-
-}
-
-/* ===============================
-   Fin du fichier
-================================= */
-
-/*
-=========================================================
-COMSA v1.0
-
-Fichier : dashboard.css
-
-Inspection Générale du Travail
-
-Créé par :
-Inspecteur Limengo (Pmiller)
-
-© 2026 - Tous droits réservés.
-=========================================================
-*/
