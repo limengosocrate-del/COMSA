@@ -1,66 +1,109 @@
-// 🔥 InspecteurBot - Cerveau de recherche Code du travail
+// 🤖 InspecteurBot IA - Mode Intelligent
 
 let pdfTexteComplet = "";
 
-// 📄 Charger le PDF automatiquement
+// 📄 Charger le PDF
 async function chargerPDF() {
 
-    const loadingTask = pdfjsLib.getDocument("code_du_travail.pdf");
+    const pdf = await pdfjsLib.getDocument("code_du_travail.pdf").promise;
 
-    const pdf = await loadingTask.promise;
-
-    let texteFinal = "";
+    let texte = "";
 
     for (let i = 1; i <= pdf.numPages; i++) {
 
         const page = await pdf.getPage(i);
-
         const content = await page.getTextContent();
 
         const strings = content.items.map(item => item.str);
 
-        texteFinal += strings.join(" ") + "\n";
-
+        texte += strings.join(" ") + "\n";
     }
 
-    pdfTexteComplet = texteFinal.toLowerCase();
+    pdfTexteComplet = texte.toLowerCase();
 
-    console.log("✅ PDF chargé avec succès !");
+    console.log("✅ InspecteurBot IA prêt !");
 }
 
-// 🚀 lancer le chargement
 chargerPDF();
 
 
-// 🔍 Fonction de recherche intelligente
+// 🧠 IA SIMPLE (compréhension des questions)
+function analyserQuestion(question) {
+
+    question = question.toLowerCase();
+
+    // 🎯 mots-clés juridiques
+    if (question.includes("licenciement")) {
+        return "licenciement";
+    }
+
+    if (question.includes("contrat")) {
+        return "contrat de travail";
+    }
+
+    if (question.includes("smig") || question.includes("salaire")) {
+        return "salaire";
+    }
+
+    if (question.includes("congé")) {
+        return "congé";
+    }
+
+    if (question.includes("heures supplémentaires")) {
+        return "heures supplémentaires";
+    }
+
+    if (question.includes("travail des enfants") || question.includes("mineur")) {
+        return "travail des enfants";
+    }
+
+    return question;
+}
+
+
+// 🔍 RECHERCHE INTELLIGENTE
 function rechercher() {
 
-    const input = document.getElementById("searchInput").value.toLowerCase();
-
+    const input = document.getElementById("searchInput").value;
     const resultDiv = document.getElementById("results");
 
     if (!input) {
-        resultDiv.innerHTML = "⚠️ Veuillez entrer une recherche.";
+        resultDiv.innerHTML = "⚠️ Veuillez entrer une question.";
         return;
     }
 
-    if (pdfTexteComplet.includes(input)) {
+    // 🧠 analyse IA
+    const motCle = analyserQuestion(input);
 
-        // trouver position
-        const index = pdfTexteComplet.indexOf(input);
+    if (pdfTexteComplet.includes(motCle)) {
 
-        let extrait = pdfTexteComplet.substring(index, index + 800);
+        const index = pdfTexteComplet.indexOf(motCle);
+
+        const extrait = pdfTexteComplet.substring(index, index + 1200);
 
         resultDiv.innerHTML = `
-            <h3>🔍 Résultat trouvé :</h3>
+            <h2>🤖 InspecteurBot IA</h2>
+            <p><b>Question :</b> ${input}</p>
+            <hr>
+            <h3>📖 Résultat juridique :</h3>
             <p>${extrait}</p>
+            <hr>
+            <p>⚖️ Analyse automatique du Code du travail</p>
         `;
 
     } else {
 
         resultDiv.innerHTML = `
-            <h3>❌ Aucun résultat trouvé</h3>
-            <p>Essayez avec un autre mot (ex: licenciement, SMIG, contrat...)</p>
+            <h2>🤖 InspecteurBot IA</h2>
+            <p>❌ Aucun article trouvé directement.</p>
+            <p>Essayez des mots comme :</p>
+            <ul>
+                <li>licenciement</li>
+                <li>contrat de travail</li>
+                <li>SMIG</li>
+                <li>congé</li>
+                <li>heures supplémentaires</li>
+            </ul>
         `;
     }
-          }
+}
