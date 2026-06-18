@@ -105,3 +105,701 @@
         </div>
 
   </section>
+
+```html
+<!-- ==========================
+     IDENTIFICATION DE L'ENTREPRISE
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-building"></i>
+        Identification de l'entreprise
+    </h2>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Raison sociale *</label>
+            <input type="text" id="raisonSociale" placeholder="Nom de l'entreprise">
+        </div>
+
+        <div>
+            <label>Nom commercial</label>
+            <input type="text" id="nomCommercial">
+        </div>
+
+        <div>
+            <label>Secteur d'activité</label>
+            <input type="text" id="secteurActivite">
+        </div>
+
+        <div>
+            <label>Nature juridique</label>
+            <select id="natureJuridique">
+                <option value="">Sélectionner...</option>
+                <option>Entreprise individuelle</option>
+                <option>SARL</option>
+                <option>SA</option>
+                <option>ASBL</option>
+                <option>Établissement public</option>
+                <option>Autre</option>
+            </select>
+        </div>
+
+        <div>
+            <label>RCCM</label>
+            <input type="text" id="rccm">
+        </div>
+
+        <div>
+            <label>ID NAT</label>
+            <input type="text" id="idnat">
+        </div>
+
+        <div>
+            <label>NIF</label>
+            <input type="text" id="nif">
+        </div>
+
+        <div>
+            <label>Numéro CNSS</label>
+            <input type="text" id="cnss">
+        </div>
+
+        <div>
+            <label>Province</label>
+            <select id="province">
+                <option value="">Sélectionner...</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Ville</label>
+            <select id="ville">
+                <option value="">Sélectionner...</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Commune</label>
+            <select id="commune">
+                <option value="">Sélectionner...</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Quartier</label>
+            <input type="text" id="quartier">
+        </div>
+
+        <div>
+            <label>Avenue</label>
+            <input type="text" id="avenue">
+        </div>
+
+        <div>
+            <label>Numéro</label>
+            <input type="text" id="numero">
+        </div>
+
+        <div>
+            <label>Téléphone</label>
+            <input type="tel" id="telephone" value="+243 ">
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input type="email" id="email">
+        </div>
+
+        <div>
+            <label>Nom du Responsable</label>
+            <input type="text" id="responsable">
+        </div>
+
+        <div>
+            <label>Fonction</label>
+            <input type="text" id="fonction">
+        </div>
+
+    </div>
+
+</section>
+```
+```html
+<!-- ==========================
+     EFFECTIF DES TRAVAILLEURS
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-users"></i>
+        Effectif des travailleurs
+    </h2>
+
+    <table class="table-effectif">
+
+        <thead>
+            <tr>
+                <th>Catégorie</th>
+                <th>Hommes</th>
+                <th>Femmes</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Cadres</td>
+                <td><input type="number" id="cadresH" min="0" value="0"></td>
+                <td><input type="number" id="cadresF" min="0" value="0"></td>
+                <td><input type="text" id="cadresT" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Agents de maîtrise</td>
+                <td><input type="number" id="maitriseH" min="0" value="0"></td>
+                <td><input type="number" id="maitriseF" min="0" value="0"></td>
+                <td><input type="text" id="maitriseT" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Employés</td>
+                <td><input type="number" id="employesH" min="0" value="0"></td>
+                <td><input type="number" id="employesF" min="0" value="0"></td>
+                <td><input type="text" id="employesT" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Ouvriers</td>
+                <td><input type="number" id="ouvriersH" min="0" value="0"></td>
+                <td><input type="number" id="ouvriersF" min="0" value="0"></td>
+                <td><input type="text" id="ouvriersT" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Apprentis / Stagiaires</td>
+                <td><input type="number" id="stagiairesH" min="0" value="0"></td>
+                <td><input type="number" id="stagiairesF" min="0" value="0"></td>
+                <td><input type="text" id="stagiairesT" readonly></td>
+            </tr>
+
+        </tbody>
+
+        <tfoot>
+
+            <tr>
+
+                <th>TOTAL GÉNÉRAL</th>
+
+                <th>
+                    <input type="text" id="totalHommes" readonly>
+                </th>
+
+                <th>
+                    <input type="text" id="totalFemmes" readonly>
+                </th>
+
+                <th>
+                    <input type="text" id="totalGeneral" readonly>
+                </th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</section>
+```
+```html
+<!-- ==========================
+     CONTRÔLE DES DOCUMENTS OBLIGATOIRES
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-folder-open"></i>
+        Contrôle des documents obligatoires
+    </h2>
+
+    <table class="table-controle">
+
+        <thead>
+
+            <tr>
+
+                <th>Document</th>
+                <th>Conforme</th>
+                <th>Non Conforme</th>
+                <th>Non Présenté</th>
+                <th>Observations</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Registre du personnel</td>
+                <td><input type="radio" name="registre" value="oui"></td>
+                <td><input type="radio" name="registre" value="non"></td>
+                <td><input type="radio" name="registre" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Contrats de travail</td>
+                <td><input type="radio" name="contrats" value="oui"></td>
+                <td><input type="radio" name="contrats" value="non"></td>
+                <td><input type="radio" name="contrats" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Bulletins de paie</td>
+                <td><input type="radio" name="bulletins" value="oui"></td>
+                <td><input type="radio" name="bulletins" value="non"></td>
+                <td><input type="radio" name="bulletins" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Règlement intérieur</td>
+                <td><input type="radio" name="reglement" value="oui"></td>
+                <td><input type="radio" name="reglement" value="non"></td>
+                <td><input type="radio" name="reglement" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Affiliation CNSS</td>
+                <td><input type="radio" name="cnss" value="oui"></td>
+                <td><input type="radio" name="cnss" value="non"></td>
+                <td><input type="radio" name="cnss" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Déclarations ONEM</td>
+                <td><input type="radio" name="onem" value="oui"></td>
+                <td><input type="radio" name="onem" value="non"></td>
+                <td><input type="radio" name="onem" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Affiliation INPP</td>
+                <td><input type="radio" name="inpp" value="oui"></td>
+                <td><input type="radio" name="inpp" value="non"></td>
+                <td><input type="radio" name="inpp" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Preuve de paiement SMIG</td>
+                <td><input type="radio" name="smig" value="oui"></td>
+                <td><input type="radio" name="smig" value="non"></td>
+                <td><input type="radio" name="smig" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Registre des congés</td>
+                <td><input type="radio" name="conges" value="oui"></td>
+                <td><input type="radio" name="conges" value="non"></td>
+                <td><input type="radio" name="conges" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Registre des accidents de travail</td>
+                <td><input type="radio" name="accidents" value="oui"></td>
+                <td><input type="radio" name="accidents" value="non"></td>
+                <td><input type="radio" name="accidents" value="absent"></td>
+                <td><input type="text"></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+```
+```html
+<!-- ==========================
+     CONTRÔLE DE CONFORMITÉ
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-clipboard-check"></i>
+        Contrôle de conformité
+    </h2>
+
+    <table class="table-controle">
+
+        <thead>
+            <tr>
+                <th>Point de contrôle</th>
+                <th>Oui</th>
+                <th>Non</th>
+                <th>Observations</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Respect de la durée légale du travail</td>
+                <td><input type="radio" name="travail1"></td>
+                <td><input type="radio" name="travail1"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Paiement régulier des salaires</td>
+                <td><input type="radio" name="travail2"></td>
+                <td><input type="radio" name="travail2"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Respect du SMIG</td>
+                <td><input type="radio" name="travail3"></td>
+                <td><input type="radio" name="travail3"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Heures supplémentaires réglementées</td>
+                <td><input type="radio" name="travail4"></td>
+                <td><input type="radio" name="travail4"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Congés annuels accordés</td>
+                <td><input type="radio" name="travail5"></td>
+                <td><input type="radio" name="travail5"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Protection de la maternité</td>
+                <td><input type="radio" name="travail6"></td>
+                <td><input type="radio" name="travail6"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Travail des jeunes conforme à la loi</td>
+                <td><input type="radio" name="travail7"></td>
+                <td><input type="radio" name="travail7"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Absence de travail forcé</td>
+                <td><input type="radio" name="travail8"></td>
+                <td><input type="radio" name="travail8"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Liberté syndicale respectée</td>
+                <td><input type="radio" name="travail9"></td>
+                <td><input type="radio" name="travail9"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Convention collective appliquée</td>
+                <td><input type="radio" name="travail10"></td>
+                <td><input type="radio" name="travail10"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Équipements de Protection Individuelle (EPI)</td>
+                <td><input type="radio" name="travail11"></td>
+                <td><input type="radio" name="travail11"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Mesures d'hygiène et de sécurité</td>
+                <td><input type="radio" name="travail12"></td>
+                <td><input type="radio" name="travail12"></td>
+                <td><input type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Service de médecine du travail disponible</td>
+                <td><input type="radio" name="travail13"></td>
+                <td><input type="radio" name="travail13"></td>
+                <td><input type="text"></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+```
+```html
+<!-- ==========================
+     INFRACTIONS - RECOMMANDATIONS - SIGNATURES
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Infractions constatées
+    </h2>
+
+    <label>Décrire les infractions constatées</label>
+    <textarea id="infractions"
+              rows="6"
+              placeholder="Décrire toutes les infractions constatées lors de l'inspection..."></textarea>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-list-check"></i>
+        Mesures correctives exigées
+    </h2>
+
+    <label>Mesures à prendre par l'entreprise</label>
+    <textarea id="mesures"
+              rows="6"
+              placeholder="Indiquer les mesures correctives imposées..."></textarea>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-calendar-check"></i>
+        Délai de régularisation
+    </h2>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Date limite</label>
+            <input type="date" id="dateLimite">
+        </div>
+
+        <div>
+            <label>Nouvelle visite prévue</label>
+            <input type="date" id="dateControle">
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-comment-dots"></i>
+        Observations générales
+    </h2>
+
+    <textarea id="observations"
+              rows="8"
+              placeholder="Observations générales de l'Inspecteur du Travail..."></textarea>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-signature"></i>
+        Signatures
+    </h2>
+
+    <div class="grid-2">
+
+        <div>
+
+            <label>Nom de l'Inspecteur</label>
+
+            <input
+                type="text"
+                id="inspecteur">
+
+        </div>
+
+        <div>
+
+            <label>Nom du représentant de l'entreprise</label>
+
+            <input
+                type="text"
+                id="representant">
+
+        </div>
+
+        <div>
+
+            <label>Fonction du représentant</label>
+
+            <input
+                type="text"
+                id="fonctionRepresentant">
+
+        </div>
+
+        <div>
+
+            <label>Date de signature</label>
+
+            <input
+                type="date"
+                id="dateSignature">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-file-export"></i>
+        Validation du rapport
+    </h2>
+
+    <div class="actions">
+
+        <button type="button" id="btnEnregistrer">
+            💾 Enregistrer
+        </button>
+
+        <button type="button" id="btnImprimer">
+            🖨️ Imprimer
+        </button>
+
+        <button type="button" id="btnPdf">
+            📄 Exporter en PDF
+        </button>
+
+        <button type="reset">
+            🔄 Réinitialiser
+        </button>
+
+    </div>
+
+</section>
+```
+```html
+<!-- ==========================
+     OBSERVATIONS & DÉCISION
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-pen-to-square"></i>
+        Observations et décision de l'inspecteur
+    </h2>
+
+    <label>Observations générales</label>
+    <textarea rows="5" placeholder="Saisir les observations..."></textarea>
+
+    <label>Infractions constatées</label>
+    <textarea rows="5"></textarea>
+
+    <label>Mesures correctives exigées</label>
+    <textarea rows="5"></textarea>
+
+    <label>Délais accordés</label>
+    <input type="text" placeholder="Ex: 30 jours">
+
+</section>
+
+<!-- ==========================
+     SIGNATURES
+========================== -->
+
+<section class="card">
+
+    <h2>
+        <i class="fa-solid fa-signature"></i>
+        Signatures
+    </h2>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Signature Inspecteur</label>
+            <div class="signature-box">
+                (Signature numérique)
+            </div>
+        </div>
+
+        <div>
+            <label>Signature Entreprise</label>
+            <div class="signature-box">
+                (Cachet + Signature)
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================
+     BOUTONS ACTIONS
+========================== -->
+
+<section class="card actions">
+
+    <button class="btn-save">💾 Enregistrer</button>
+
+    <button class="btn-print">🖨 Imprimer</button>
+
+    <button class="btn-export">📄 Export PDF</button>
+
+    <button class="btn-back">⬅ Retour</button>
+
+</section>
+
+<!-- ==========================
+     PIED DE PAGE
+========================== -->
+
+<footer class="footer">
+
+    <p>
+        Créé par <strong>Inspecteur Limengo (Pmiller)</strong>
+    </p>
+
+</footer>
+
+</div>
+
+<script src="../../js/fiches.js"></script>
+
+</body>
+</html>
+```
+
