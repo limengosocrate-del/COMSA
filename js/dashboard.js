@@ -93,3 +93,50 @@ function notification(msg){
 
 // test notification
 notification("Bienvenue dans InspecteurBot RDC 🚀");
+
+//==============================
+// INSPECTEUR IA
+//==============================
+
+function repondreIA(){
+
+let question=document.getElementById("questionIA").value.toLowerCase();
+
+let reponse=document.getElementById("reponseIA");
+
+if(question.includes("contrat")){
+
+reponse.innerHTML=
+"Le contrat de travail est un accord entre l'employeur et le travailleur conformément au Code du Travail.";
+
+}
+
+else if(question.includes("licenciement")){
+
+reponse.innerHTML=
+"Le licenciement doit respecter les dispositions prévues par le Code du Travail et les procédures applicables.";
+
+}
+
+else if(question.includes("salaire")){
+
+reponse.innerHTML=
+"Le salaire doit être payé conformément au contrat de travail et aux dispositions légales en vigueur.";
+
+}
+
+else if(question.includes("inspection")){
+
+reponse.innerHTML=
+"L'inspection du travail consiste à contrôler l'application de la législation sociale dans les entreprises.";
+
+}
+
+else{
+
+reponse.innerHTML=
+"Je n'ai pas encore cette réponse. Cette fonction sera enrichie progressivement avec l'ensemble du Code du Travail et les procédures de l'IGT.";
+
+}
+
+}
