@@ -1370,7 +1370,208 @@ onkeyup="searchCase()">
 </table>
 
 </section>
-    
+
+// ===============================
+// PARTIE 7.2
+// ===============================
+
+let dossiers=[];
+
+function saveCase(){
+
+const dossier={
+
+numero:document.getElementById("caseNumber").value,
+
+titre:document.getElementById("caseTitle").value,
+
+inspecteur:document.getElementById("caseInspector").value,
+
+date:document.getElementById("caseDate").value,
+
+lieu:document.getElementById("caseLocation").value,
+
+statut:document.getElementById("caseStatus").value
+
+};
+
+if(dossier.titre==""){
+
+alert("Veuillez saisir le titre.");
+
+return;
+
+}
+
+dossiers.push(dossier);
+
+displayCases();
+
+document.getElementById("caseForm").reset();
+
+document.getElementById("caseNumber").value=generateCaseNumber();
+
+}
+
+function displayCases(){
+
+let tbody=document.getElementById("caseTableBody");
+
+tbody.innerHTML="";
+
+dossiers.forEach((d,index)=>{
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>${d.numero}</td>
+
+<td>${d.titre}</td>
+
+<td>${d.inspecteur}</td>
+
+<td>${d.date}</td>
+
+<td>${d.lieu}</td>
+
+<td>${d.statut}</td>
+
+<td>
+
+<button onclick="viewCase(${index})">
+
+👁 Voir
+
+</button>
+
+<button onclick="deleteCase(${index})">
+
+🗑 Supprimer
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+function deleteCase(index){
+
+if(confirm("Supprimer ce dossier ?")){
+
+dossiers.splice(index,1);
+
+displayCases();
+
+}
+
+}
+
+function viewCase(index){
+
+const d=dossiers[index];
+
+alert(
+
+"Numéro : "+d.numero+
+
+"\n\nAffaire : "+d.titre+
+
+"\n\nInspecteur : "+d.inspecteur+
+
+"\n\nDate : "+d.date+
+
+"\n\nLieu : "+d.lieu+
+
+"\n\nStatut : "+d.statut
+
+);
+
+}
+
+function searchCase(){
+
+let filtre=document.getElementById("searchCase").value.toLowerCase();
+
+let lignes=document.querySelectorAll("#caseTable tbody tr");
+
+lignes.forEach(row=>{
+
+let texte=row.innerText.toLowerCase();
+
+row.style.display=texte.includes(filtre)?"":"none";
+
+});
+
+} 
+
+#caseTable{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+#caseTable th{
+
+background:#0b6efd;
+
+color:white;
+
+padding:12px;
+
+}
+
+#caseTable td{
+
+padding:10px;
+
+border:1px solid #ddd;
+
+text-align:center;
+
+}
+
+#caseTable tr:nth-child(even){
+
+background:#f5f5f5;
+
+}
+
+#caseTable button{
+
+margin:2px;
+
+padding:6px 12px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+#searchCase{
+
+width:100%;
+
+padding:12px;
+
+border-radius:8px;
+
+border:1px solid #ccc;
+
+}    
 <!-- =========================
     FOOTER OFFICIEL
 ========================= -->
