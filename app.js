@@ -149,3 +149,36 @@ function startVoice() {
         voiceBtn.innerHTML = "🎤";
     };
         }
+
+async function demanderIA(question) {
+
+    const reponse = document.getElementById("resultat");
+
+    reponse.innerHTML = "🤖 Analyse en cours...";
+
+    try {
+
+        const resultat = await fetch("https://TON-SERVEUR/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                question: question
+            })
+        });
+
+        const data = await resultat.json();
+
+        reponse.innerHTML = `
+            <h3>🤖 InspecteurBot IA</h3>
+            <p>${data.reponse}</p>
+        `;
+
+    } catch (e) {
+
+        reponse.innerHTML = "❌ Impossible de contacter l'IA.";
+
+    }
+
+}
