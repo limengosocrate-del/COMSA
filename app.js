@@ -1,193 +1,532 @@
-// 🤖 InspecteurBot IA - VERSION PRO
+/*====================================================
+            INSPECTEURBOT IA
+                 APP.JS
+                 Partie 1
+====================================================*/
 
-let pdfTexteComplet = "";
 
-// ===============================
-// 📄 CHARGEMENT DU CODE DU TRAVAIL (PDF)
-// ===============================
-async function chargerPDF() {
+/*=====================================
+      DISPARITION DU LOADER
+=====================================*/
 
-    try {
+window.addEventListener("load", function(){
 
-        const pdf = await pdfjsLib.getDocument("code_du_travail.pdf").promise;
+const loader = document.getElementById("loader");
 
-        let texte = "";
+if(loader){
 
-        for (let i = 1; i <= pdf.numPages; i++) {
+setTimeout(function(){
 
-            const page = await pdf.getPage(i);
-            const content = await page.getTextContent();
+loader.style.opacity="0";
 
-            const strings = content.items.map(item => item.str);
+loader.style.transition="0.8s";
 
-            texte += strings.join(" ") + "\n";
-        }
+setTimeout(function(){
 
-        pdfTexteComplet = texte.toLowerCase();
+loader.style.display="none";
 
-        console.log("✅ PDF Code du travail chargé");
+},800);
 
-    } catch (e) {
-        console.log("❌ Erreur chargement PDF", e);
-    }
+},1800);
+
 }
 
-chargerPDF();
+});
 
 
-// ===============================
-// 🧠 IA SIMPLE (analyse question)
-// ===============================
-function analyserQuestion(question) {
+/*=====================================
+      COMPTEURS ANIMÉS
+=====================================*/
 
-    question = question.toLowerCase();
+function animateCounter(id,endValue){
 
-    if (question.includes("licenciement")) return "licenciement";
-    if (question.includes("contrat")) return "contrat de travail";
-    if (question.includes("smig") || question.includes("salaire")) return "salaire";
-    if (question.includes("congé")) return "congé";
-    if (question.includes("heures")) return "heures supplémentaires";
-    if (question.includes("mineur") || question.includes("enfant")) return "travail des enfants";
+const element=document.getElementById(id);
 
-    return question;
+if(!element) return;
+
+let start=0;
+
+let duration=2000;
+
+let increment=endValue/100;
+
+let timer=setInterval(function(){
+
+start+=increment;
+
+if(start>=endValue){
+
+start=endValue;
+
+clearInterval(timer);
+
 }
 
+element.innerHTML=Math.floor(start);
 
-// ===============================
-// 🔍 RECHERCHE + IA COMBINÉE
-// ===============================
-function rechercher() {
+},duration/100);
 
-    const input = document.getElementById("searchInput").value;
-    const resultDiv = document.getElementById("results");
-
-    if (!input) {
-        resultDiv.innerHTML = "⚠️ Veuillez entrer une question.";
-        return;
-    }
-
-    const motCle = analyserQuestion(input);
-
-    // 🔎 recherche dans PDF
-    if (pdfTexteComplet.includes(motCle)) {
-
-        const index = pdfTexteComplet.indexOf(motCle);
-        const extrait = pdfTexteComplet.substring(index, index + 1000);
-
-        resultDiv.innerHTML = `
-            <div class="box">
-                <h2>📖 Code du travail</h2>
-                <p>${extrait}</p>
-            </div>
-        `;
-
-    } else {
-
-        resultDiv.innerHTML = `
-            <div class="box">
-                <h2>🤖 InspecteurBot IA</h2>
-                <p>❌ Aucun article trouvé dans le PDF.</p>
-                <p>Je consulte l'IA...</p>
-            </div>
-        `;
-    }
-
-    // 🤖 toujours appeler IA
-    demanderIA(input);
 }
 
 
-// ===============================
-// 🎤 VOIX (Speech to Text)
-// ===============================
-function startVoice() {
+window.addEventListener("load",function(){
 
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+animateCounter("inspectionCount",248);
 
-    if (!SpeechRecognition) {
-        alert("❌ Navigateur non compatible");
-        return;
-    }
+animateCounter("pvCount",91);
 
-    const recognition = new SpeechRecognition();
+animateCounter("companyCount",164);
 
-    recognition.lang = "fr-FR";
-    recognition.interimResults = false;
+animateCounter("infractionCount",56);
 
-    const voiceBtn = document.getElementById("voiceBtn");
+});
 
-    voiceBtn.innerHTML = "🎙️...";
 
-    recognition.start();
+/*=====================================
+      MESSAGES MOTIVATION
+=====================================*/
 
-    recognition.onresult = function(event) {
+const motivationMessages=[
 
-        const texte = event.results[0][0].transcript;
+"Bienvenue Inspecteur 👋",
 
-        document.getElementById("searchInput").value = texte;
+"La loi protège le travailleur.",
 
-        // 🔥 recherche + IA
-        rechercher();
-        demanderIA(texte);
-    };
+"Chaque inspection améliore le monde du travail.",
 
-    recognition.onend = function() {
-        voiceBtn.innerHTML = "🎤";
-    };
+"L'intégrité est la force de l'Inspecteur.",
+
+"Votre mission contribue à une société plus juste.",
+
+"Soyez rigoureux, juste et impartial.",
+
+"Le respect du Code du Travail protège tous les citoyens.",
+
+"Chaque contrôle est une opportunité d'amélioration.",
+
+"La sécurité des travailleurs est une priorité.",
+
+"Bonne mission Inspecteur."
+
+];
+
+
+function changeNotification(){
+
+const notification=document.getElementById("notification-text");
+
+if(!notification) return;
+
+let index=Math.floor(Math.random()*motivationMessages.length);
+
+notification.innerHTML=motivationMessages[index];
+
+}
+
+setInterval(changeNotification,7000);
+
+window.onload=changeNotification;
+
+
+/*=====================================
+      DATE DU JOUR
+=====================================*/
+
+const today=new Date();
+
+console.log(today.toLocaleDateString());
+
+
+
+/*=====================================
+      HEURE EN TEMPS RÉEL
+=====================================*/
+
+function updateClock(){
+
+const clock=document.getElementById("clock");
+
+if(!clock) return;
+
+const now=new Date();
+
+clock.innerHTML=now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+/*=====================================
+            CHART.JS
+=====================================*/
+
+window.addEventListener("load",function(){
+
+const inspectionCanvas=document.getElementById("inspectionChart");
+
+if(inspectionCanvas){
+
+new Chart(inspectionCanvas,{
+
+type:"bar",
+
+data:{
+
+labels:["Jan","Fév","Mar","Avr","Mai","Juin"],
+
+datasets:[{
+
+label:"Inspections",
+
+data:[21,34,27,48,39,52],
+
+backgroundColor:"#005baa"
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+}
+
+}
+
+});
+
 }
 
 
-// ===============================
-// 🤖 IA PRO (API EXTERNE)
-// ===============================
-async function demanderIA(question) {
+const pvCanvas=document.getElementById("pvChart");
 
-    const resultDiv = document.getElementById("results");
+if(pvCanvas){
 
-    try {
+new Chart(pvCanvas,{
 
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer VOTRE_CLE_API_ICI",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
+type:"doughnut",
 
-                model: "openai/gpt-4o-mini",
+data:{
 
-                messages: [
-                    {
-                        role: "system",
-                        content: "Tu es InspecteurBot, assistant officiel du travail en RDC. Réponds uniquement en droit du travail."
-                    },
-                    {
-                        role: "user",
-                        content: question
-                    }
-                ]
+labels:[
 
-            })
-        });
+"PV établis",
 
-        const data = await response.json();
+"Dossiers ouverts",
 
-        if (data.choices) {
+"En attente"
 
-            resultDiv.innerHTML += `
-                <div class="ia-box">
-                    <h2>🤖 IA InspecteurBot</h2>
-                    <p>${data.choices[0].message.content}</p>
-                </div>
-            `;
-        }
+],
 
-    } catch (error) {
+datasets:[{
 
-        resultDiv.innerHTML += `
-            <div class="ia-box error">
-                ❌ IA indisponible
-            </div>
-        `;
-    }
-        }
+data:[91,38,17],
+
+backgroundColor:[
+
+"#005baa",
+
+"#2e7d32",
+
+"#ff9800"
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true
+
+}
+
+});
+
+}
+
+});
+
+
+/*=====================================
+      BOUTON IA FLOTTANT
+=====================================*/
+
+const floatingAI=document.getElementById("floatingAI");
+
+if(floatingAI){
+
+floatingAI.addEventListener("click",function(){
+
+alert(
+
+"🤖 InspecteurBot IA\n\nCette fonctionnalité sera reliée au Code du Travail PDF et à l'IA."
+
+);
+
+});
+
+}
+
+
+/*=====================================
+      MESSAGE IA
+=====================================*/
+
+const smartMessages=[
+
+"💡 Pensez à vérifier les contrats de travail.",
+
+"📚 Consultez toujours les articles du Code du Travail.",
+
+"⚖️ Une bonne inspection repose sur des preuves.",
+
+"👷 La sécurité des travailleurs reste prioritaire.",
+
+"📄 Vérifiez les registres obligatoires.",
+
+"🛡️ Respectez la procédure avant toute sanction.",
+
+"🤖 InspecteurBot IA est prêt à vous assister."
+
+];
+
+
+function rotateSmartMessage(){
+
+const element=document.getElementById("smartMessage");
+
+if(!element) return;
+
+let random=Math.floor(Math.random()*smartMessages.length);
+
+element.innerHTML=smartMessages[random];
+
+}
+
+rotateSmartMessage();
+
+setInterval(rotateSmartMessage,6000);
+
+
+/*=====================================
+      ANIMATION DES CARTES
+=====================================*/
+
+const cards=document.querySelectorAll(
+
+".card,.menu-card,.news-card,.inf-card"
+
+);
+
+cards.forEach(function(card){
+
+card.addEventListener("mouseenter",function(){
+
+card.style.transform="translateY(-8px)";
+
+});
+
+card.addEventListener("mouseleave",function(){
+
+card.style.transform="translateY(0px)";
+
+});
+
+});
+
+
+/*=====================================
+      PRÉPARATION LECTURE PDF
+=====================================*/
+
+let codeTravail=[];
+
+async function chargerCodeTravail(){
+
+console.log("Chargement du Code du Travail...");
+
+}
+
+/*
+Dans la prochaine version :
+
+code_travail.pdf
+
+↓
+
+PDF.js
+
+↓
+
+Extraction de toutes les pages
+
+↓
+
+Indexation des articles
+
+↓
+
+Recherche intelligente
+
+↓
+
+Réponse IA
+*/
+
+/*=====================================
+      RECHERCHE DANS LE CODE DU TRAVAIL
+=====================================*/
+
+/*
+Cette variable contiendra les articles extraits
+du PDF une fois PDF.js intégré.
+*/
+
+let articlesCode = [];
+
+
+/*=====================================
+      RECHERCHE PAR MOT-CLÉ
+=====================================*/
+
+function rechercherArticle(motCle){
+
+if(!motCle) return [];
+
+motCle = motCle.toLowerCase();
+
+return articlesCode.filter(function(article){
+
+return article.texte.toLowerCase().includes(motCle);
+
+});
+
+}
+
+
+/*=====================================
+      RECHERCHE PAR NUMÉRO D'ARTICLE
+=====================================*/
+
+function rechercherNumero(numero){
+
+return articlesCode.find(function(article){
+
+return article.numero == numero;
+
+});
+
+}
+
+
+/*=====================================
+      QUESTION À L'IA
+=====================================*/
+
+async function poserQuestionIA(question){
+
+if(!question) return;
+
+const resultat = rechercherArticle(question);
+
+if(resultat.length>0){
+
+console.log(resultat);
+
+return resultat;
+
+}
+
+console.log("Aucun article trouvé.");
+
+return [];
+
+}
+
+
+/*=====================================
+      PRÉPARATION OPENAI / GEMINI
+=====================================*/
+
+/*
+
+Exemple futur :
+
+const reponse = await fetch(API_URL,{
+
+method:"POST",
+
+headers:{
+
+Authorization:"Bearer VOTRE_CLE_API",
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+question:question,
+
+contexte:resultat
+
+})
+
+});
+
+L'IA répondra uniquement
+à partir des articles trouvés.
+
+*/
+
+
+/*=====================================
+      GESTION DES BOUTONS
+=====================================*/
+
+document.querySelectorAll("button").forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+console.log("Bouton :",btn.innerText);
+
+});
+
+});
+
+
+/*=====================================
+      MODE SOMBRE (préparation)
+=====================================*/
+
+function changerTheme(){
+
+document.body.classList.toggle("dark");
+
+}
+
+
+/*=====================================
+      INITIALISATION
+=====================================*/
+
+window.addEventListener("load",function(){
+
+console.log("InspecteurBot IA démarré.");
+
+console.log("Application prête.");
+
+console.log("En attente du Code du Travail PDF.");
+
+});
