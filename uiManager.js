@@ -296,3 +296,505 @@ function scrollToBottom() {
 }
 
 
+// ===============================
+// Carte Source RAG
+// ===============================
+
+function createSourceCard(source) {
+
+    const card = document.createElement("div");
+
+    card.className = "source-card";
+
+    card.innerHTML = `
+        <div class="source-header">
+            📄 <strong>${escapeHTML(source.title || "Document")}</strong>
+        </div>
+
+        <div class="source-body">
+            ${escapeHTML(source.content || "")}
+        </div>
+
+        <div class="source-footer">
+            Score : ${source.score ?? "-"}
+        </div>
+    `;
+
+    return card;
+}
+
+// ===============================
+// Affichage des sources
+// ===============================
+
+function displaySources(sources = []) {
+
+    if (!sources.length)
+        return;
+
+    const container = document.createElement("div");
+
+    container.className = "sources-container";
+
+    const title = document.createElement("h3");
+
+    title.textContent = "Sources utilisées";
+
+    container.appendChild(title);
+
+    sources.forEach(source => {
+
+        container.appendChild(createSourceCard(source));
+
+    });
+
+    chatContainer.appendChild(container);
+
+    scrollToBottom();
+}
+
+// ===============================
+// Carte Document
+// ===============================
+
+function createDocumentCard(doc) {
+
+    const card = document.createElement("div");
+
+    card.className = "document-card";
+
+    card.innerHTML = `
+        <div class="document-title">
+            📚 ${escapeHTML(doc.name)}
+        </div>
+
+        <div class="document-info">
+            ${escapeHTML(doc.description || "")}
+        </div>
+    `;
+
+    if (doc.url) {
+
+        const button = document.createElement("a");
+
+        button.href = doc.url;
+
+        button.target = "_blank";
+
+        button.className = "document-button";
+
+        button.textContent = "Ouvrir";
+
+        card.appendChild(button);
+    }
+
+    return card;
+}
+
+// ===============================
+// Affichage des documents
+// ===============================
+
+function displayDocuments(documents = []) {
+
+    if (!documents.length)
+        return;
+
+    const wrapper = document.createElement("div");
+
+    wrapper.className = "documents-wrapper";
+
+    documents.forEach(doc => {
+
+        wrapper.appendChild(createDocumentCard(doc));
+
+    });
+
+    chatContainer.appendChild(wrapper);
+
+    scrollToBottom();
+}
+
+
+// ===============================
+// Boutons d'action
+// ===============================
+
+function createActionBar(messageElement, text) {
+
+    const bar = document.createElement("div");
+
+    bar.className = "message-actions";
+
+    // Copier
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "action-btn";
+    copyBtn.textContent = "📋 Copier";
+
+    copyBtn.onclick = async () => {
+
+        try {
+            await navigator.clipboard.writeText(text);
+
+            copyBtn.textContent = "✅ Copié";
+
+            setTimeout(() => {
+                copyBtn.textContent = "📋 Copier";
+            }, 1500);
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    // Régénérer
+    const retryBtn = document.createElement("button");
+    retryBtn.className = "action-btn";
+    retryBtn.textContent = "🔄 Régénérer";
+
+    retryBtn.onclick = () => {
+
+        document.dispatchEvent(
+            new CustomEvent("regenerateLastAnswer")
+        );
+
+    };
+
+    // Vote positif
+    const likeBtn = document.createElement("button");
+    likeBtn.className = "action-btn";
+    likeBtn.textContent = "👍";
+
+    likeBtn.onclick = () => {
+
+        likeBtn.classList.toggle("active");
+
+        dislikeBtn.classList.remove("active");
+    };
+
+    // Vote négatif
+    const dislikeBtn = document.createElement("button");
+    dislikeBtn.className = "action-btn";
+    dislikeBtn.textContent = "👎";
+
+    dislikeBtn.onclick = () => {
+
+        dislikeBtn.classList.toggle("active");
+
+        likeBtn.classList.remove("active");
+    };
+
+    bar.append(
+        copyBtn,
+        retryBtn,
+        likeBtn,
+        dislikeBtn
+    );
+
+    messageElement.appendChild(bar);
+}
+
+// ===============================
+// Galerie d'images
+// ===============================
+
+function displayImages(images = []) {
+
+    if (!images.length)
+        return;
+
+    const gallery = document.createElement("div");
+
+    gallery.className = "image-gallery";
+
+    images.forEach(src => {
+
+        const img = document.createElement("img");
+
+        img.src = src;
+
+        img.loading = "lazy";
+
+        img.className = "chat-image";
+
+        img.onclick = () => {
+
+            window.open(src, "_blank");
+
+        };
+
+        gallery.appendChild(img);
+
+    });
+
+    chatContainer.appendChild(gallery);
+
+    scrollToBottom();
+}
+
+// ===============================
+// Tableau HTML
+// ===============================
+
+function displayTable(headers = [], rows = []) {
+
+    const table = document.createElement("table");
+
+    table.className = "chat-table";
+
+    const thead = document.createElement("thead");
+
+    const tr = document.createElement("tr");
+
+    headers.forEach(h => {
+
+        const th = document.createElement("th");
+
+        th.textContent = h;
+
+        tr.appendChild(th);
+
+    });
+
+    thead.appendChild(tr);
+
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+
+    rows.forEach(row => {
+
+        const tr = document.createElement("tr");
+
+        row.forEach(cell => {
+
+            const td = document.createElement("td");
+
+            td.textContent = cell;
+
+            tr.appendChild(td);
+
+        });
+
+        tbody.appendChild(tr);
+
+    });
+
+    table.appendChild(tbody);
+
+    chatContainer.appendChild(table);
+
+    scrollToBottom();
+}
+
+// ===============================
+// Citation
+// ===============================
+
+function displayCitation(text) {
+
+    const block = document.createElement("blockquote");
+
+    block.className = "chat-citation";
+
+    block.textContent = text;
+
+    chatContainer.appendChild(block);
+
+    scrollToBottom();
+}
+
+
+ // ===============================
+// Notifications (Toast)
+// ===============================
+
+function showToast(message, duration = 2500) {
+
+    const toast = document.createElement("div");
+
+    toast.className = "toast";
+
+    toast.textContent = message;
+
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.classList.add("show");
+    });
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+        setTimeout(() => {
+
+            toast.remove();
+
+        }, 300);
+
+    }, duration);
+}
+
+// ===============================
+// Barre de progression
+// ===============================
+
+function showProgress(percent = 0) {
+
+    let bar = document.querySelector(".progress-bar");
+
+    if (!bar) {
+
+        bar = document.createElement("div");
+
+        bar.className = "progress-bar";
+
+        document.body.appendChild(bar);
+
+    }
+
+    bar.style.width = `${percent}%`;
+
+    if (percent >= 100) {
+
+        setTimeout(() => {
+
+            bar.remove();
+
+        }, 300);
+
+    }
+}
+
+// ===============================
+// Nettoyer le chat
+// ===============================
+
+function clearChat() {
+
+    chatContainer.innerHTML = "";
+
+    showToast("Conversation effacée");
+}
+
+// ===============================
+// Animation d'apparition
+// ===============================
+
+function animateMessage(element) {
+
+    element.classList.add("fade-in");
+
+    setTimeout(() => {
+
+        element.classList.remove("fade-in");
+
+    }, 400);
+}
+
+// ===============================
+// Défilement intelligent
+// ===============================
+
+function smartScroll() {
+
+    const distance =
+        chatContainer.scrollHeight -
+        chatContainer.scrollTop -
+        chatContainer.clientHeight;
+
+    if (distance < 200) {
+
+        scrollToBottom();
+
+    }
+}
+
+// ===============================
+// Focus automatique
+// ===============================
+
+function focusInput() {
+
+    if (messageInput) {
+
+        messageInput.focus();
+
+    }
+}
+
+// ===============================
+// Initialisation UI
+// ===============================
+
+function initializeUI() {
+
+    scrollToBottom();
+
+    focusInput();
+
+    document.addEventListener("click", e => {
+
+        if (e.target.matches(".copy-code")) {
+
+            const code =
+                e.target.parentElement.querySelector("code").innerText;
+
+            navigator.clipboard.writeText(code);
+
+            showToast("Code copié");
+
+        }
+
+    });
+
+}
+
+// ===============================
+// Export
+// ===============================
+
+export {
+
+    initializeUI,
+
+    appendMessage,
+
+    appendStreamingMessage,
+
+    updateStreamingMessage,
+
+    finishStreamingMessage,
+
+    displayMarkdown,
+
+    displayCode,
+
+    displayImages,
+
+    displayTable,
+
+    displayCitation,
+
+    createActionBar,
+
+    showTypingIndicator,
+
+    hideTypingIndicator,
+
+    showToast,
+
+    showProgress,
+
+    clearChat,
+
+    smartScroll,
+
+    scrollToBottom,
+
+    focusInput,
+
+    animateMessage
+
+};          
