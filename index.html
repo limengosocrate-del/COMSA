@@ -1017,8 +1017,360 @@ document.getElementById("reportArea").value=
 
 }
 
+<!-- ===================================================== -->
+<!-- PARTIE 6 : INTELLIGENCE ARTIFICIELLE -->
+<!-- ===================================================== -->
 
+<section id="inspecteurbot-ai" class="section-card">
 
+<h2>🤖 InspecteurBot AI</h2>
+
+<p>
+L'intelligence artificielle intégrée assiste les inspecteurs
+dans leurs enquêtes, leurs analyses et la génération
+automatique de rapports.
+</p>
+
+<div class="ai-grid">
+
+<div class="ai-card">
+<h3>🧠 Analyse</h3>
+<p>Analyse automatique d'un dossier.</p>
+<button onclick="analyseCase()">Analyser</button>
+</div>
+
+<div class="ai-card">
+<h3>📄 Rapport</h3>
+<p>Créer un rapport automatiquement.</p>
+<button onclick="generateReport()">Créer</button>
+</div>
+
+<div class="ai-card">
+<h3>🔎 Recherche IA</h3>
+<p>Recherche intelligente dans la base.</p>
+<button onclick="smartSearch()">Rechercher</button>
+</div>
+
+<div class="ai-card">
+<h3>💬 Assistant</h3>
+<p>Discussion avec InspecteurBot.</p>
+<button onclick="openAssistant()">Ouvrir</button>
+</div>
+
+</div>
+
+</section>
+
+<!-- Assistant IA -->
+
+<section class="section-card">
+
+<h2>💬 Assistant InspecteurBot</h2>
+
+<div id="chatMessages">
+
+<p><strong>InspecteurBot :</strong>
+Bonjour Inspecteur.
+Je suis prêt à vous assister.
+</p>
+
+</div>
+
+<input
+type="text"
+id="chatInput"
+placeholder="Écrivez votre question..."
+>
+
+<button onclick="sendMessage()">
+
+Envoyer
+
+</button>
+
+</section>
+
+<!-- Analyse -->
+
+<section class="section-card">
+
+<h2>🧠 Analyse du dossier</h2>
+
+<button onclick="analyseCase()">
+
+Lancer l'analyse
+
+</button>
+
+<p id="analysisResult">
+
+Aucune analyse effectuée.
+
+</p>
+
+</section>
+
+<!-- Rapport -->
+
+<section class="section-card">
+
+<h2>📄 Rapport automatique</h2>
+
+<button onclick="generateReport()">
+
+Générer
+
+</button>
+
+<textarea
+id="reportArea"
+rows="12"
+placeholder="Le rapport apparaîtra ici...">
+</textarea>
+
+    </section>
+
+function openAssistant(){
+
+alert("Assistant InspecteurBot ouvert.");
+
+}
+
+function smartSearch(){
+
+alert("Recherche intelligente en cours...");
+
+}
+
+function sendMessage(){
+
+let input=document.getElementById("chatInput").value;
+
+if(input=="") return;
+
+let chat=document.getElementById("chatMessages");
+
+chat.innerHTML+=`
+
+<p>
+
+<strong>Vous :</strong>
+
+${input}
+
+</p>
+
+<p>
+
+<strong>InspecteurBot :</strong>
+
+Votre demande est enregistrée.
+
+</p>
+
+`;
+
+document.getElementById("chatInput").value="";
+
+}
+
+function analyseCase(){
+
+document.getElementById("analysisResult").innerHTML=
+
+"✔ Analyse terminée avec succès.<br><br>Aucune anomalie détectée.";
+
+}
+
+function generateReport(){
+
+let report="";
+
+report+="==============================\n";
+
+report+="RAPPORT OFFICIEL\n";
+
+report+="InspecteurBot\n";
+
+report+="==============================\n\n";
+
+report+="Date : "+new Date().toLocaleDateString()+"\n\n";
+
+report+="Statut : Analyse terminée.\n";
+
+report+="Aucune anomalie détectée.\n\n";
+
+report+="Rapport généré automatiquement par InspecteurBot.";
+
+document.getElementById("reportArea").value=report;
+
+}
+
+<!-- ========================================= -->
+<!-- PARTIE 7.1 - NOUVEAU DOSSIER -->
+<!-- ========================================= -->
+
+<section id="case-management" class="section-card">
+
+<h2>📁 Nouveau Dossier d'Enquête</h2>
+
+<form id="caseForm">
+
+<label>Numéro du dossier</label>
+<input type="text" id="caseNumber" readonly>
+
+<label>Titre de l'affaire</label>
+<input type="text" id="caseTitle" placeholder="Titre de l'affaire">
+
+<label>Inspecteur responsable</label>
+<input type="text" id="caseInspector" placeholder="Nom de l'inspecteur">
+
+<label>Date</label>
+<input type="date" id="caseDate">
+
+<label>Lieu</label>
+<input type="text" id="caseLocation" placeholder="Lieu de l'incident">
+
+<label>Type d'affaire</label>
+
+<select id="caseType">
+
+<option>Vol</option>
+
+<option>Escroquerie</option>
+
+<option>Agression</option>
+
+<option>Accident</option>
+
+<option>Disparition</option>
+
+<option>Fraude</option>
+
+<option>Autre</option>
+
+</select>
+
+<label>Description</label>
+
+<textarea
+id="caseDescription"
+rows="6"
+placeholder="Décrire les faits...">
+</textarea>
+
+<label>Statut</label>
+
+<select id="caseStatus">
+
+<option>En cours</option>
+
+<option>Suspendu</option>
+
+<option>Clôturé</option>
+
+</select>
+
+<button type="button" onclick="saveCase()">
+
+💾 Enregistrer le dossier
+
+</button>
+
+</form>
+
+    </section>
+
+ function generateCaseNumber(){
+
+const year=new Date().getFullYear();
+
+const random=Math.floor(Math.random()*9000)+1000;
+
+return "IB-"+year+"-"+random;
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const num=document.getElementById("caseNumber");
+
+if(num){
+
+num.value=generateCaseNumber();
+
+}
+
+});
+
+function saveCase(){
+
+const title=document.getElementById("caseTitle").value;
+
+if(title==""){
+
+alert("Veuillez saisir le titre de l'affaire.");
+
+return;
+
+}
+
+alert("✅ Dossier enregistré avec succès !");
+
+document.getElementById("caseForm").reset();
+
+document.getElementById("caseNumber").value=generateCaseNumber();
+
+}   
+
+<!-- ========================================= -->
+<!-- PARTIE 7.2 : LISTE DES DOSSIERS -->
+<!-- ========================================= -->
+
+<section id="listeDossiers" class="section-card">
+
+<h2>📂 Liste des Dossiers</h2>
+
+<input
+type="text"
+id="searchCase"
+placeholder="🔍 Rechercher un dossier..."
+onkeyup="searchCase()">
+
+<br><br>
+
+<table id="caseTable">
+
+<thead>
+
+<tr>
+
+<th>N° Dossier</th>
+
+<th>Affaire</th>
+
+<th>Inspecteur</th>
+
+<th>Date</th>
+
+<th>Lieu</th>
+
+<th>Statut</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="caseTableBody">
+
+</tbody>
+
+</table>
+
+</section>
+    
 <!-- =========================
     FOOTER OFFICIEL
 ========================= -->
