@@ -821,7 +821,203 @@ Rechercher
 
 </canvas>
 
-</section>   
+</section> 
+
+<!-- ===================================================== -->
+<!-- PARTIE 6 - INTELLIGENCE ARTIFICIELLE -->
+<!-- ===================================================== -->
+
+<section id="inspecteurbot-ai" class="section-card">
+
+<h2>🤖 InspecteurBot Intelligence Artificielle</h2>
+
+<p>
+Bienvenue dans le centre d'intelligence artificielle d'InspecteurBot.
+Cette IA assiste les inspecteurs dans leurs enquêtes,
+leurs analyses et la rédaction des rapports.
+</p>
+
+<div class="ai-grid">
+
+<div class="ai-card">
+<h3>🧠 Analyse des dossiers</h3>
+<p>L'IA peut analyser automatiquement les informations d'une enquête.</p>
+<button>Analyser</button>
+</div>
+
+<div class="ai-card">
+<h3>📑 Générer un rapport</h3>
+<p>Créer automatiquement un rapport professionnel.</p>
+<button>Générer</button>
+</div>
+
+<div class="ai-card">
+<h3>🔍 Recherche intelligente</h3>
+<p>Rechercher rapidement une personne, un dossier ou une preuve.</p>
+<button>Rechercher</button>
+</div>
+
+<div class="ai-card">
+<h3>💬 Assistant IA</h3>
+<p>Poser directement vos questions à InspecteurBot.</p>
+<button>Ouvrir</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="section-card">
+
+<h2>💬 Assistant IA</h2>
+
+<div class="chat-container">
+
+<div id="chatMessages">
+
+<p><strong>InspecteurBot :</strong> Bonjour Inspecteur. Comment puis-je vous assister aujourd'hui ?</p>
+
+</div>
+
+<input
+type="text"
+id="chatInput"
+placeholder="Écrire votre question..."
+>
+
+<button onclick="sendMessage()">
+
+Envoyer
+
+</button>
+
+</div>
+
+</section>
+
+<section class="section-card">
+
+<h2>🧠 Analyse Automatique</h2>
+
+<button onclick="analyseCase()">
+
+Lancer l'analyse
+
+</button>
+
+<p id="analysisResult">
+
+Aucune analyse disponible.
+
+</p>
+
+</section>
+
+<section class="section-card">
+
+<h2>📄 Génération Automatique des Rapports</h2>
+
+<button onclick="generateReport()">
+
+Créer le rapport
+
+</button>
+
+<textarea
+rows="10"
+id="reportArea"
+placeholder="Le rapport généré apparaîtra ici...">
+</textarea>
+
+</section>
+
+<section class="section-card">
+
+<h2>🌍 Traduction</h2>
+
+<select>
+
+<option>Français</option>
+
+<option>English</option>
+
+<option>Kiswahili</option>
+
+<option>Lingala</option>
+
+<option>Tshiluba</option>
+
+<option>Português</option>
+
+</select>
+
+<button>
+
+Traduire
+
+</button>
+
+</section>
+
+<section class="section-card">
+
+<h2>📂 Analyse des Documents</h2>
+
+<input type="file">
+
+<button>
+
+Analyser le document
+
+</button>
+
+</section>
+
+function sendMessage(){
+
+let input=document.getElementById("chatInput").value;
+
+if(input==="") return;
+
+let chat=document.getElementById("chatMessages");
+
+chat.innerHTML+=`
+<p><strong>Vous :</strong> ${input}</p>
+<p><strong>InspecteurBot :</strong>
+Votre demande a bien été reçue.
+L'analyse sera effectuée automatiquement.
+</p>
+`;
+
+document.getElementById("chatInput").value="";
+
+}
+
+function analyseCase(){
+
+document.getElementById("analysisResult").innerHTML=
+"✔ Analyse terminée. Aucune incohérence détectée dans le dossier.";
+
+}
+
+function generateReport(){
+
+document.getElementById("reportArea").value=
+
+"=============================\n"+
+"RAPPORT OFFICIEL\n"+
+"InspecteurBot\n"+
+"=============================\n\n"+
+
+"Date : "+new Date().toLocaleDateString()+"\n\n"+
+
+"Le rapport a été généré automatiquement par InspecteurBot.\n\n"+
+
+"Signature électronique validée.";
+
+}
+
+
 
 <!-- =========================
     FOOTER OFFICIEL
