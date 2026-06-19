@@ -5,16 +5,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>IGT RDC - InspecteurBot</title>
+<title>InspecteurBot - IGT RDC</title>
 
 <link rel="stylesheet" href="css/dashboard.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
 </head>
 
 <body>
+
+<!-- =========================
+    ÉCRAN D’ACCUEIL / SÉCURITÉ
+========================= -->
+
+<div id="authScreen" class="auth-screen">
+
+    <div class="auth-box">
+
+        <h1>🤖 InspecteurBot</h1>
+        <p>Inspection Générale du Travail - RDC</p>
+
+        <button onclick="showLogin()">🔐 Connexion</button>
+        <button onclick="showRegister()">📝 Créer un compte</button>
+        <button onclick="showInfo()">ℹ️ À propos</button>
+
+    </div>
+
+</div>
 
 <!-- =========================
     SIDEBAR PRINCIPAL
@@ -22,39 +43,41 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <div class="sidebar">
 
-<div class="logo">
+    <div class="logo">
 
-<img src="assets/logo-rdc.png" alt="IGT Logo">
+        <img src="assets/logo-rdc.png" alt="IGT Logo">
 
-<h2>IGT RDC</h2>
+        <h2>InspecteurBot</h2>
 
-<p>Inspection Générale du Travail</p>
+        <p>IGT - République DRC</p>
 
-</div>
+    </div>
 
-<ul>
+    <ul>
 
-<li><a href="#"><i class="fa fa-landmark"></i> IGT</a></li>
+        <li><a href="#"><i class="fa fa-landmark"></i> IGT</a></li>
 
-<li><a href="#"><i class="fa fa-gavel"></i> Code du Travail</a></li>
+        <li><a href="#"><i class="fa fa-book"></i> Code du Travail</a></li>
 
-<li><a href="#"><i class="fa fa-robot"></i> Inspecteur IA</a></li>
+        <li><a href="#"><i class="fa fa-robot"></i> IA InspecteurBot</a></li>
 
-<li><a href="#"><i class="fa fa-users"></i> Personnel</a></li>
+        <li><a href="#"><i class="fa fa-user-plus"></i> Utilisateurs</a></li>
 
-<li><a href="#"><i class="fa fa-building"></i> Entreprises</a></li>
+        <li><a href="#"><i class="fa fa-building"></i> Entreprises</a></li>
 
-<li><a href="fiches-controle/formulaires/F01.html"><i class="fa fa-file"></i> Fiches F01-S03</a></li>
+        <li><a href="fiches-controle/formulaires/F01.html">
+            <i class="fa fa-file"></i> Fiches F01 - S03
+        </a></li>
 
-<li><a href="#"><i class="fa fa-folder"></i> ONEM / SMIG / CNSS</a></li>
+        <li><a href="#"><i class="fa fa-folder"></i> ONEM / SMIG / CNSS</a></li>
 
-<li><a href="#"><i class="fa fa-chart-line"></i> Statistiques</a></li>
+        <li><a href="#"><i class="fa fa-chart-line"></i> Statistiques</a></li>
 
-<li><a href="#"><i class="fa fa-database"></i> Archives</a></li>
+        <li><a href="#"><i class="fa fa-database"></i> Archives</a></li>
 
-<li><a href="login.html"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+        <li><a href="login.html"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 
-</ul>
+    </ul>
 
 </div>
 
@@ -66,213 +89,532 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <header class="topbar">
 
-<div class="search">
+    <div class="search">
+        <input type="text"
+        placeholder="Recherche Code du Travail, entreprise, article...">
+    </div>
 
-<input type="text" placeholder="Recherche Code du Travail, entreprise, article...">
+    <div class="user">
+        <i class="fa fa-bell"></i>
+        <span>InspecteurBot IA</span>
+    </div>
 
-</div>
+</header>
 
-<div class="user">
+<!-- =========================
+    HERO IGT
+========================= -->
 
-<i class="fa fa-bell"></i>
+<section class="igt-banner">
 
-<span id="user">Inspecteur IGT</span>
+    <div class="overlay">
 
-</div>
+        <img src="assets/logo-rdc.png" class="logo-transparent">
 
-                                         </header>
+        <h1>INSPECTION GÉNÉRALE DU TRAVAIL</h1>
 
-  <section class="igt-banner">
+        <p>République Démocratique du Congo</p>
 
-<div class="overlay">
-
-<img src="assets/logo-rdc.png" class="logo-transparent">
-
-<h1>INSPECTION GÉNÉRALE DU TRAVAIL</h1>
-
-<p>République Démocratique du Congo</p>
-
-</div>
+    </div>
 
 </section>
 
+<!-- =========================
+    À PROPOS IGT + IA
+========================= -->
+
 <section class="card">
 
-<h2><i class="fa fa-landmark"></i> À propos de l'IGT</h2>
+<h2><i class="fa fa-landmark"></i> InspecteurBot & IGT</h2>
 
 <p>
-L’Inspection Générale du Travail (IGT) est un service public chargé de veiller
-à l’application du Code du Travail en République Démocratique du Congo.
+InspecteurBot est l’assistant intelligent officiel de l’Inspection Générale du Travail.
+Il permet la gestion des inspections, des entreprises, des fiches F01–S03 et du Code du Travail.
 </p>
 
 <ul>
 
 <li>Contrôle des entreprises</li>
-
-<li>Protection des travailleurs</li>
-
-<li>Application du droit du travail</li>
-
-<li>Lutte contre les infractions sociales</li>
-
-<li>Conseil aux employeurs et travailleurs</li>
+<li>Analyse juridique automatique</li>
+<li>Gestion des inspections F01 à S03</li>
+<li>Support IA pour inspecteurs et contrôleurs</li>
+<li>Génération de rapports et PV</li>
 
 </ul>
 
-</section>
+    </section>
 
-<section class="grid">
-
-<div class="card">
-
-<h2>📜 Code du Travail</h2>
-
-<p>Recherche rapide d’articles</p>
-
-<input type="text" placeholder="Ex: Article 62, licenciement...">
-
-<button>Rechercher</button>
-
-</div>
-
-<div class="card">
-<div class="card">
-
-<h2>🤖 Inspecteur IA</h2>
-
-<p>Assistant intelligent de l'Inspection Générale du Travail</p>
-
-<textarea id="questionIA"
-placeholder="Posez votre question à l'IA..."
-rows="6"></textarea>
-
-<button onclick="repondreIA()">
-<button onclick="startVoice()" id="voiceBtn">
-🎤 Parler
-</button>
-Envoyer
-</button>
-
-<div id="reponseIA" class="ia-box">
-
-L'Inspecteur IA est prêt.
-
-</div>
-
-</div>
-
-</section>
+<!-- =========================
+    DASHBOARD STATISTIQUES
+========================= -->
 
 <section class="stats">
 
-<div class="card">
-<h3>Inspections</h3>
-<p>1 245</p>
-</div>
+    <div class="stat-card">
+        <h3>📋 Fiches F01</h3>
+        <p id="countF01">0</p>
+    </div>
 
-<div class="card">
-<h3>Entreprises</h3>
-<p>560</p>
-</div>
+    <div class="stat-card">
+        <h3>📁 Entreprises</h3>
+        <p id="countEntreprise">0</p>
+    </div>
 
-<div class="card">
-<h3>Infractions</h3>
-<p>132</p>
-</div>
+    <div class="stat-card">
+        <h3>⚖️ Infractions</h3>
+        <p id="countInfractions">0</p>
+    </div>
 
-<div class="card">
-<h3>PV générés</h3>
-<p>98</p>
-</div>
-    
+    <div class="stat-card">
+        <h3>👥 Utilisateurs</h3>
+        <p id="countUsers">0</p>
+    </div>
+
 </section>
-    
+
+<!-- =========================
+    IA INSPECTEURBOT
+========================= -->
+
 <section class="card">
 
-<h2>📋 Tableau de bord des inspections</h2>
+    <h2>🤖 InspecteurBot IA</h2>
 
-<table id="tableauInspections">
+    <textarea id="questionIA"
+        placeholder="Pose ta question juridique ici..."
+        rows="5"></textarea>
 
-<thead>
+    <div style="display:flex; gap:10px; margin-top:10px;">
 
-<tr>
+        <button onclick="repondreIA()">
+            💬 Envoyer
+        </button>
 
-<th>Date</th>
+        <button onclick="startVoice()" id="voiceBtn">
+            🎤 Parler
+        </button>
 
-<th>Entreprise</th>
+    </div>
 
-<th>Province</th>
-
-<th>Inspecteur</th>
-
-<th>État</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>24/07/2026</td>
-
-<td>BRALIMA</td>
-
-<td>Kinshasa</td>
-
-<td>Inspecteur Limengo</td>
-
-<td><span class="badge termine">Terminée</span></td>
-
-</tr>
-
-<tr>
-
-<td>25/07/2026</td>
-
-<td>Rawbank</td>
-
-<td>Kinshasa</td>
-
-<td>Inspecteur IGT</td>
-
-<td><span class="badge attente">En cours</span></td>
-
-</tr>
-
-<tr>
-
-<td>26/07/2026</td>
-
-<td>Vodacom</td>
-
-<td>Haut-Katanga</td>
-
-<td>Inspecteur IA</td>
-
-<td><span class="badge programme">Programmée</span></td>
-
-</tr>
-
-</tbody>
-
-</table>
+    <div id="reponseIA" class="ia-box">
+        L'IA est prête à vous assister...
+    </div>
 
 </section>
-    
-<footer>
 
-<p>
-Créé par <strong>Inspecteur Limengo (Pmiller)</strong>
-</p>
+<!-- =========================
+    CODE DU TRAVAIL
+========================= -->
+
+<section class="card">
+
+    <h2>📚 Code du Travail RDC</h2>
+
+    <input type="text"
+        id="searchInput"
+        placeholder="Rechercher article, licenciement, SMIG...">
+
+    <div style="display:flex; gap:10px; margin-top:10px;">
+
+        <button onclick="rechercher()">
+            🔍 Rechercher
+        </button>
+
+        <button onclick="startVoice()" id="voiceBtn">
+            🎤 Voix
+        </button>
+
+    </div>
+
+    <div id="results" class="results-box">
+        Aucun résultat pour le moment
+    </div>
+
+</section>
+
+<!-- =========================
+    MODULE INSPECTION
+========================= -->
+
+<section class="card">
+
+    <h2>⚖️ Inspection Rapide</h2>
+
+    <ul>
+
+        <li>✔ Vérification contrat de travail</li>
+        <li>✔ Contrôle SMIG</li>
+        <li>✔ Heures supplémentaires</li>
+        <li>✔ Sécurité au travail</li>
+        <li>✔ Affiliation CNSS / ONEM / INPP</li>
+
+    </ul>
+
+</section>
+
+<!-- =========================
+    UTILISATEURS (SYSTÈME FUTUR)
+========================= -->
+
+<section class="card">
+
+    <h2>👤 Profil Inspecteur</h2>
+
+    <p>Système de gestion des utilisateurs InspecteurBot</p>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Nom complet</label>
+            <input type="text" id="userName" placeholder="Nom de l'utilisateur">
+        </div>
+
+        <div>
+            <label>Matricule Inspecteur</label>
+            <input type="text" id="userMatricule" placeholder="IB-000001">
+        </div>
+
+        <div>
+            <label>Rôle</label>
+            <select id="userRole">
+                <option>Inspecteur</option>
+                <option>Contrôleur</option>
+                <option>Administrateur</option>
+                <option>Directeur</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Province</label>
+            <input type="text" id="userProvince">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+    CONNEXION (FUTUR SYSTÈME)
+========================= -->
+
+<section class="card">
+
+    <h2>🔐 Sécurité InspecteurBot</h2>
+
+    <p>Système de connexion sécurisé (phase 2 du projet)</p>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Identifiant</label>
+            <input type="text" placeholder="IB-XXXXXX">
+        </div>
+
+        <div>
+            <label>Mot de passe</label>
+            <input type="password" placeholder="••••••••">
+        </div>
+
+    </div>
+
+    <button>Se connecter</button>
+
+</section>
+
+<!-- =========================
+    MÉMOIRE IA
+========================= -->
+
+<section class="card">
+
+    <h2>🧠 Mémoire InspecteurBot</h2>
+
+    <p>L'IA mémorise automatiquement les actions de l'utilisateur</p>
+
+    <ul>
+
+        <li>Dernières recherches</li>
+        <li>Fiches F01 utilisées</li>
+        <li>Infractions détectées</li>
+        <li>Entreprises contrôlées</li>
+
+    </ul>
+
+</section>
+
+<!-- =========================
+    CONTRÔLE ADMIN
+========================= -->
+
+<section class="card">
+
+    <h2>⚙️ Administration InspecteurBot</h2>
+
+    <ul>
+
+        <li>➕ Ajouter utilisateur</li>
+        <li>❌ Bannir utilisateur</li>
+        <li>🔄 Réinitialiser compte</li>
+        <li>📊 Voir activité utilisateurs</li>
+
+    </ul>
+
+</section>
+
+<!-- =========================
+    ARCHIVES INSPECTEURBOT
+========================= -->
+
+<section class="card">
+
+    <h2>📁 Archives des Inspections</h2>
+
+    <p>Historique des fiches F01 à S03</p>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Rechercher une fiche</label>
+            <input type="text" placeholder="F01, F02, S01...">
+        </div>
+
+        <div>
+            <label>Filtrer par entreprise</label>
+            <input type="text" placeholder="Nom entreprise">
+        </div>
+
+    </div>
+
+    <button>🔍 Rechercher dans les archives</button>
+
+</section>
+
+<!-- =========================
+    RAPPORT / PV AUTOMATIQUE
+========================= -->
+
+<section class="card">
+
+    <h2>📄 Génération de Rapport / PV</h2>
+
+    <p>Création automatique de procès-verbal d’inspection</p>
+
+    <textarea rows="6"
+        placeholder="Résumé de l’inspection..."></textarea>
+
+    <div class="grid-2">
+
+        <div>
+            <label>Type de rapport</label>
+            <select>
+                <option>Rapport d'inspection</option>
+                <option>Procès-verbal</option>
+                <option>Avertissement</option>
+                <option>Mise en demeure</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Destinataire</label>
+            <input type="text" placeholder="Entreprise / Responsable">
+        </div>
+
+    </div>
+
+    <button>📄 Générer PDF</button>
+
+</section>
+
+<!-- =========================
+    STATISTIQUES AVANCÉES
+========================= -->
+
+<section class="card stats">
+
+    <h2>📊 Statistiques InspecteurBot</h2>
+
+    <div class="stat-grid">
+
+        <div class="stat">
+            <h3>📋 Inspections</h3>
+            <p>0</p>
+        </div>
+
+        <div class="stat">
+            <h3>⚖️ Infractions</h3>
+            <p>0</p>
+        </div>
+
+        <div class="stat">
+            <h3>🏢 Entreprises</h3>
+            <p>0</p>
+        </div>
+
+        <div class="stat">
+            <h3>👤 Inspecteurs</h3>
+            <p>0</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+    RECHERCHE HISTORIQUE
+========================= -->
+
+<section class="card">
+
+    <h2>🔍 Recherche intelligente</h2>
+
+    <input type="text"
+        placeholder="Rechercher dans toutes les inspections...">
+
+    <button>Rechercher</button>
+
+</section>
+
+<!-- =========================
+    MODULE INSPECTION FINAL
+========================= -->
+
+<section class="card">
+
+    <h2>⚖️ Inspection Officielle</h2>
+
+    <ul>
+
+        <li>✔ Contrôle Code du Travail</li>
+        <li>✔ Vérification SMIG</li>
+        <li>✔ CNSS / ONEM / INPP</li>
+        <li>✔ Sécurité des travailleurs</li>
+        <li>✔ Infractions et sanctions</li>
+
+    </ul>
+
+</section>
+
+<!-- =========================
+    IA AVANCÉE INSPECTEURBOT
+========================= -->
+
+<section class="card">
+
+    <h2>🤖 InspecteurBot IA PRO</h2>
+
+    <p>Analyse automatique du droit du travail congolais</p>
+
+    <textarea id="iaInput"
+        rows="5"
+        placeholder="Décrivez une situation juridique..."></textarea>
+
+    <div style="display:flex; gap:10px; margin-top:10px;">
+
+        <button onclick="analyserIA()">
+            ⚖️ Analyser
+        </button>
+
+        <button onclick="startVoice()">
+            🎤 Parler
+        </button>
+
+    </div>
+
+    <div id="iaResult" class="ia-box">
+        L’IA est prête à analyser les infractions.
+    </div>
+
+</section>
+
+<!-- =========================
+    VOIX & LECTURE IA
+========================= -->
+
+<section class="card">
+
+    <h2>🎤 Assistant Vocal InspecteurBot</h2>
+
+    <p>Parlez à InspecteurBot et écoutez les réponses</p>
+
+    <button onclick="startVoice()">
+        🎙️ Activer reconnaissance vocale
+    </button>
+
+    <button onclick="lireReponse()">
+        🔊 Lire la réponse
+    </button>
+
+</section>
+
+<!-- =========================
+    PDF / IMAGE UPLOAD
+========================= -->
+
+<section class="card">
+
+    <h2>📎 Analyse Documents (PDF / Image)</h2>
+
+    <p>InspecteurBot peut analyser des documents</p>
+
+    <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg">
+
+    <button onclick="analyserDocument()">
+        📄 Analyser document
+    </button>
+
+</section>
+
+<!-- =========================
+    OCR / LECTURE PV
+========================= -->
+
+<section class="card">
+
+    <h2>📸 Lecture de procès-verbal</h2>
+
+    <p>Analyse automatique des documents scannés</p>
+
+    <div id="ocrResult">
+        Aucun document analysé
+    </div>
+
+</section>
+
+<!-- =========================
+    MODE APPLICATION ANDROID
+========================= -->
+
+<section class="card">
+
+    <h2>📱 Application InspecteurBot</h2>
+
+    <ul>
+
+        <li>✔ Installation sur téléphone</li>
+        <li>✔ Mode hors ligne</li>
+        <li>✔ Notifications d’inspection</li>
+        <li>✔ Accès rapide au Code du Travail</li>
+
+    </ul>
+
+    <button onclick="installerApp()">
+        📲 Installer InspecteurBot
+    </button>
+
+</section>
+
+<!-- =========================
+    FOOTER OFFICIEL
+========================= -->
+
+<footer class="footer">
+
+    <p>
+        InspecteurBot - Inspection Générale du Travail (IGT) - RDC
+    </p>
+
+    <p>
+        Créé par <strong>Inspecteur Limengo (Pmiller) 2026</strong>
+    </p>
 
 </footer>
-
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="js/app.js"></script>
-<script src="js/dashboard.js"></script>
-</body>
-</html>
