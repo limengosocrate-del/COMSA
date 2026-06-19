@@ -1,67 +1,61 @@
-// 🤖 InspecteurBot IA - Mode Intelligent
+// 🤖 InspecteurBot IA - VERSION PRO
 
 let pdfTexteComplet = "";
 
-// 📄 Charger le PDF
+// ===============================
+// 📄 CHARGEMENT DU CODE DU TRAVAIL (PDF)
+// ===============================
 async function chargerPDF() {
 
-    const pdf = await pdfjsLib.getDocument("code_du_travail.pdf").promise;
+    try {
 
-    let texte = "";
+        const pdf = await pdfjsLib.getDocument("code_du_travail.pdf").promise;
 
-    for (let i = 1; i <= pdf.numPages; i++) {
+        let texte = "";
 
-        const page = await pdf.getPage(i);
-        const content = await page.getTextContent();
+        for (let i = 1; i <= pdf.numPages; i++) {
 
-        const strings = content.items.map(item => item.str);
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
 
-        texte += strings.join(" ") + "\n";
+            const strings = content.items.map(item => item.str);
+
+            texte += strings.join(" ") + "\n";
+        }
+
+        pdfTexteComplet = texte.toLowerCase();
+
+        console.log("✅ PDF Code du travail chargé");
+
+    } catch (e) {
+        console.log("❌ Erreur chargement PDF", e);
     }
-
-    pdfTexteComplet = texte.toLowerCase();
-
-    console.log("✅ InspecteurBot IA prêt !");
 }
 
 chargerPDF();
 
 
-// 🧠 IA SIMPLE (compréhension des questions)
+// ===============================
+// 🧠 IA SIMPLE (analyse question)
+// ===============================
 function analyserQuestion(question) {
 
     question = question.toLowerCase();
 
-    // 🎯 mots-clés juridiques
-    if (question.includes("licenciement")) {
-        return "licenciement";
-    }
-
-    if (question.includes("contrat")) {
-        return "contrat de travail";
-    }
-
-    if (question.includes("smig") || question.includes("salaire")) {
-        return "salaire";
-    }
-
-    if (question.includes("congé")) {
-        return "congé";
-    }
-
-    if (question.includes("heures supplémentaires")) {
-        return "heures supplémentaires";
-    }
-
-    if (question.includes("travail des enfants") || question.includes("mineur")) {
-        return "travail des enfants";
-    }
+    if (question.includes("licenciement")) return "licenciement";
+    if (question.includes("contrat")) return "contrat de travail";
+    if (question.includes("smig") || question.includes("salaire")) return "salaire";
+    if (question.includes("congé")) return "congé";
+    if (question.includes("heures")) return "heures supplémentaires";
+    if (question.includes("mineur") || question.includes("enfant")) return "travail des enfants";
 
     return question;
 }
 
 
-// 🔍 RECHERCHE INTELLIGENTE
+// ===============================
+// 🔍 RECHERCHE + IA COMBINÉE
+// ===============================
 function rechercher() {
 
     const input = document.getElementById("searchInput").value;
@@ -72,50 +66,46 @@ function rechercher() {
         return;
     }
 
-    // 🧠 analyse IA
     const motCle = analyserQuestion(input);
 
+    // 🔎 recherche dans PDF
     if (pdfTexteComplet.includes(motCle)) {
 
         const index = pdfTexteComplet.indexOf(motCle);
-
-        const extrait = pdfTexteComplet.substring(index, index + 1200);
+        const extrait = pdfTexteComplet.substring(index, index + 1000);
 
         resultDiv.innerHTML = `
-            <h2>🤖 InspecteurBot IA</h2>
-            <p><b>Question :</b> ${input}</p>
-            <hr>
-            <h3>📖 Résultat juridique :</h3>
-            <p>${extrait}</p>
-            <hr>
-            <p>⚖️ Analyse automatique du Code du travail</p>
+            <div class="box">
+                <h2>📖 Code du travail</h2>
+                <p>${extrait}</p>
+            </div>
         `;
 
     } else {
 
         resultDiv.innerHTML = `
-            <h2>🤖 InspecteurBot IA</h2>
-            <p>❌ Aucun article trouvé directement.</p>
-            <p>Essayez des mots comme :</p>
-            <ul>
-                <li>licenciement</li>
-                <li>contrat de travail</li>
-                <li>SMIG</li>
-                <li>congé</li>
-                <li>heures supplémentaires</li>
-            </ul>
+            <div class="box">
+                <h2>🤖 InspecteurBot IA</h2>
+                <p>❌ Aucun article trouvé dans le PDF.</p>
+                <p>Je consulte l'IA...</p>
+            </div>
         `;
     }
+
+    // 🤖 toujours appeler IA
+    demanderIA(input);
 }
 
-// 🎤 InspecteurBot - Mode vocal
 
+// ===============================
+// 🎤 VOIX (Speech to Text)
+// ===============================
 function startVoice() {
 
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-        alert("❌ Votre navigateur ne supporte pas la reconnaissance vocale");
+        alert("❌ Navigateur non compatible");
         return;
     }
 
@@ -123,7 +113,6 @@ function startVoice() {
 
     recognition.lang = "fr-FR";
     recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
 
     const voiceBtn = document.getElementById("voiceBtn");
 
@@ -137,48 +126,68 @@ function startVoice() {
 
         document.getElementById("searchInput").value = texte;
 
-        // ⚡ lancer automatiquement la recherche
+        // 🔥 recherche + IA
         rechercher();
-    };
-
-    recognition.onerror = function() {
-        alert("❌ Erreur de reconnaissance vocale");
+        demanderIA(texte);
     };
 
     recognition.onend = function() {
         voiceBtn.innerHTML = "🎤";
     };
-        }
+}
 
+
+// ===============================
+// 🤖 IA PRO (API EXTERNE)
+// ===============================
 async function demanderIA(question) {
 
-    const reponse = document.getElementById("resultat");
-
-    reponse.innerHTML = "🤖 Analyse en cours...";
+    const resultDiv = document.getElementById("results");
 
     try {
 
-        const resultat = await fetch("https://TON-SERVEUR/api/chat", {
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
+                "Authorization": "Bearer VOTRE_CLE_API_ICI",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                question: question
+
+                model: "openai/gpt-4o-mini",
+
+                messages: [
+                    {
+                        role: "system",
+                        content: "Tu es InspecteurBot, assistant officiel du travail en RDC. Réponds uniquement en droit du travail."
+                    },
+                    {
+                        role: "user",
+                        content: question
+                    }
+                ]
+
             })
         });
 
-        const data = await resultat.json();
+        const data = await response.json();
 
-        reponse.innerHTML = `
-            <h3>🤖 InspecteurBot IA</h3>
-            <p>${data.reponse}</p>
+        if (data.choices) {
+
+            resultDiv.innerHTML += `
+                <div class="ia-box">
+                    <h2>🤖 IA InspecteurBot</h2>
+                    <p>${data.choices[0].message.content}</p>
+                </div>
+            `;
+        }
+
+    } catch (error) {
+
+        resultDiv.innerHTML += `
+            <div class="ia-box error">
+                ❌ IA indisponible
+            </div>
         `;
-
-    } catch (e) {
-
-        reponse.innerHTML = "❌ Impossible de contacter l'IA.";
-
     }
-
-}
+        }
