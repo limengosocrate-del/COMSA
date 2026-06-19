@@ -2,676 +2,249 @@
 <html lang="fr">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>InspecteurBot - IGT RDC</title>
+<title>InspecteurBot IA | Inspection Générale du Travail</title>
 
-<link rel="stylesheet" href="css/dashboard.css">
+<meta name="description" content="Assistant Intelligent des Inspecteurs du Travail">
+
+<meta name="author" content="Inspecteur Limengo (Pmiller)">
+
+<link rel="icon" href="images/logo-igt.png">
+
+<link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- =========================
-    ÉCRAN D’ACCUEIL / SÉCURITÉ
-========================= -->
+<!-- ===========================
+     CHARGEMENT
+=========================== -->
 
-<div id="authScreen" class="auth-screen">
+<div id="loader">
 
-    <div class="auth-box">
+<div class="loader-content">
 
-        <h1>🤖 InspecteurBot</h1>
-        <p>Inspection Générale du Travail - RDC</p>
+<img src="images/logo-igt.png" class="loader-logo">
 
-        <button onclick="showLogin()">🔐 Connexion</button>
-        <button onclick="showRegister()">📝 Créer un compte</button>
-        <button onclick="showInfo()">ℹ️ À propos</button>
+<h2>INSPECTEURBOT IA</h2>
 
-    </div>
+<p>Inspection Générale du Travail</p>
 
-</div>
-
-<!-- =========================
-    SIDEBAR PRINCIPAL
-========================= -->
-
-<div class="sidebar">
-
-    <div class="logo">
-
-        <img src="assets/logo-rdc.png" alt="IGT Logo">
-
-        <h2>InspecteurBot</h2>
-
-        <p>IGT - République DRC</p>
-
-    </div>
-
-    <ul>
-
-        <li><a href="#"><i class="fa fa-landmark"></i> IGT</a></li>
-
-        <li><a href="#"><i class="fa fa-book"></i> Code du Travail</a></li>
-
-        <li><a href="#"><i class="fa fa-robot"></i> IA InspecteurBot</a></li>
-
-        <li><a href="#"><i class="fa fa-user-plus"></i> Utilisateurs</a></li>
-
-        <li><a href="#"><i class="fa fa-building"></i> Entreprises</a></li>
-
-        <li><a href="fiches-controle/formulaires/F01.html">
-            <i class="fa fa-file"></i> Fiches F01 - S03
-        </a></li>
-
-        <li><a href="#"><i class="fa fa-folder"></i> ONEM / SMIG / CNSS</a></li>
-
-        <li><a href="#"><i class="fa fa-chart-line"></i> Statistiques</a></li>
-
-        <li><a href="#"><i class="fa fa-database"></i> Archives</a></li>
-
-        <li><a href="login.html"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
-
-    </ul>
+<div class="spinner"></div>
 
 </div>
 
-<!-- =========================
-    MAIN CONTENT
-========================= -->
+</div>
 
-<div class="main">
+<!-- ===========================
+     EN-TÊTE
+=========================== -->
 
-<header class="topbar">
+<header class="hero">
 
-    <div class="search">
-        <input type="text"
-        placeholder="Recherche Code du Travail, entreprise, article...">
-    </div>
+<img src="images/batiment-igt.jpg"
+class="hero-image">
 
-    <div class="user">
-        <i class="fa fa-bell"></i>
-        <span>InspecteurBot IA</span>
-    </div>
+<div class="hero-overlay"></div>
+
+<img src="images/logo-igt.png"
+class="logo-watermark">
+
+<div class="hero-content">
+
+<img src="images/logo-igt.png"
+class="logo">
+
+<h1>INSPECTEURBOT IA</h1>
+
+<h3>Inspection Générale du Travail</h3>
+
+<p>
+
+Assistant Intelligent des Inspecteurs du Travail
+
+</p>
+
+<div class="hero-buttons">
+
+<button>
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+Connexion
+
+</button>
+
+<button>
+
+<i class="fa-solid fa-user-plus"></i>
+
+Inscription
+
+</button>
+
+</div>
+
+</div>
 
 </header>
 
-<!-- =========================
-    HERO IGT
-========================= -->
+<!-- ===========================
+     CITATIONS
+=========================== -->
 
-<section class="igt-banner">
+<section id="notification">
 
-    <div class="overlay">
+<div class="notification-box">
 
-        <img src="assets/logo-rdc.png" class="logo-transparent">
+<i class="fa-solid fa-lightbulb"></i>
 
-        <h1>INSPECTION GÉNÉRALE DU TRAVAIL</h1>
+<p id="notification-text">
 
-        <p>République Démocratique du Congo</p>
+"La justice sociale commence par le respect du Code du Travail."
 
-    </div>
-
-</section>
-
-<!-- =========================
-    À PROPOS IGT + IA
-========================= -->
-
-<section class="card">
-
-<h2><i class="fa fa-landmark"></i> InspecteurBot & IGT</h2>
-
-<p>
-InspecteurBot est l’assistant intelligent officiel de l’Inspection Générale du Travail.
-Il permet la gestion des inspections, des entreprises, des fiches F01–S03 et du Code du Travail.
 </p>
 
-<ul>
-
-<li>Contrôle des entreprises</li>
-<li>Analyse juridique automatique</li>
-<li>Gestion des inspections F01 à S03</li>
-<li>Support IA pour inspecteurs et contrôleurs</li>
-<li>Génération de rapports et PV</li>
-
-</ul>
-
-    </section>
-
-<!-- =========================
-    DASHBOARD STATISTIQUES
-========================= -->
-
-<section class="stats">
-
-    <div class="stat-card">
-        <h3>📋 Fiches F01</h3>
-        <p id="countF01">0</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>📁 Entreprises</h3>
-        <p id="countEntreprise">0</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>⚖️ Infractions</h3>
-        <p id="countInfractions">0</p>
-    </div>
-
-    <div class="stat-card">
-        <h3>👥 Utilisateurs</h3>
-        <p id="countUsers">0</p>
-    </div>
+</div>
 
 </section>
 
-<!-- =========================
-    IA INSPECTEURBOT
-========================= -->
+<!-- ===========================
+     TABLEAU DE BORD
+=========================== -->
 
-<section class="card">
+<section class="dashboard">
 
-    <h2>🤖 InspecteurBot IA</h2>
+<h2>
 
-    <textarea id="questionIA"
-        placeholder="Pose ta question juridique ici..."
-        rows="5"></textarea>
+<i class="fa-solid fa-chart-line"></i>
 
-    <div style="display:flex; gap:10px; margin-top:10px;">
+Tableau de Bord Intelligent
 
-        <button onclick="repondreIA()">
-            💬 Envoyer
-        </button>
+</h2>
 
-        <button onclick="startVoice()" id="voiceBtn">
-            🎤 Parler
-        </button>
+<div class="dashboard-cards">
 
-    </div>
+<div class="card">
 
-    <div id="reponseIA" class="ia-box">
-        L'IA est prête à vous assister...
-    </div>
+<i class="fa-solid fa-building"></i>
 
-</section>
+<h3>Entreprises</h3>
 
-<!-- =========================
-    CODE DU TRAVAIL
-========================= -->
+<h1 id="nbEntreprise">0</h1>
 
-<section class="card">
+</div>
 
-    <h2>📚 Code du Travail RDC</h2>
+<div class="card">
 
-    <input type="text"
-        id="searchInput"
-        placeholder="Rechercher article, licenciement, SMIG...">
+<i class="fa-solid fa-file-circle-check"></i>
 
-    <div style="display:flex; gap:10px; margin-top:10px;">
+<h3>Inspections</h3>
 
-        <button onclick="rechercher()">
-            🔍 Rechercher
-        </button>
+<h1 id="nbInspection">0</h1>
 
-        <button onclick="startVoice()" id="voiceBtn">
-            🎤 Voix
-        </button>
+</div>
 
-    </div>
+<div class="card">
 
-    <div id="results" class="results-box">
-        Aucun résultat pour le moment
-    </div>
+<i class="fa-solid fa-triangle-exclamation"></i>
 
-</section>
+<h3>Infractions</h3>
 
-<!-- =========================
-    MODULE INSPECTION
-========================= -->
+<h1 id="nbInfraction">0</h1>
 
-<section class="card">
+</div>
 
-    <h2>⚖️ Inspection Rapide</h2>
+<div class="card">
 
-    <ul>
+<i class="fa-solid fa-file-signature"></i>
 
-        <li>✔ Vérification contrat de travail</li>
-        <li>✔ Contrôle SMIG</li>
-        <li>✔ Heures supplémentaires</li>
-        <li>✔ Sécurité au travail</li>
-        <li>✔ Affiliation CNSS / ONEM / INPP</li>
+<h3>PV rédigés</h3>
 
-    </ul>
+<h1 id="nbPv">0</h1>
 
-</section>
+</div>
 
-<!-- =========================
-    UTILISATEURS (SYSTÈME FUTUR)
-========================= -->
+<div class="card">
 
-<section class="card">
+<i class="fa-solid fa-users"></i>
 
-    <h2>👤 Profil Inspecteur</h2>
+<h3>Travailleurs</h3>
 
-    <p>Système de gestion des utilisateurs InspecteurBot</p>
+<h1 id="nbTravailleurs">0</h1>
 
-    <div class="grid-2">
+</div>
 
-        <div>
-            <label>Nom complet</label>
-            <input type="text" id="userName" placeholder="Nom de l'utilisateur">
-        </div>
+<div class="card">
 
-        <div>
-            <label>Matricule Inspecteur</label>
-            <input type="text" id="userMatricule" placeholder="IB-000001">
-        </div>
+<i class="fa-solid fa-user-shield"></i>
 
-        <div>
-            <label>Rôle</label>
-            <select id="userRole">
-                <option>Inspecteur</option>
-                <option>Contrôleur</option>
-                <option>Administrateur</option>
-                <option>Directeur</option>
-            </select>
-        </div>
+<h3>Inspecteurs</h3>
 
-        <div>
-            <label>Province</label>
-            <input type="text" id="userProvince">
-        </div>
+<h1 id="nbInspecteurs">0</h1>
 
-    </div>
+</div>
 
-</section>
+</div>
 
-<!-- =========================
-    CONNEXION (FUTUR SYSTÈME)
-========================= -->
-
-<section class="card">
-
-    <h2>🔐 Sécurité InspecteurBot</h2>
-
-    <p>Système de connexion sécurisé (phase 2 du projet)</p>
-
-    <div class="grid-2">
-
-        <div>
-            <label>Identifiant</label>
-            <input type="text" placeholder="IB-XXXXXX">
-        </div>
-
-        <div>
-            <label>Mot de passe</label>
-            <input type="password" placeholder="••••••••">
-        </div>
-
-    </div>
-
-    <button>Se connecter</button>
-
-</section>
-
-<!-- =========================
-    MÉMOIRE IA
-========================= -->
-
-<section class="card">
-
-    <h2>🧠 Mémoire InspecteurBot</h2>
-
-    <p>L'IA mémorise automatiquement les actions de l'utilisateur</p>
-
-    <ul>
-
-        <li>Dernières recherches</li>
-        <li>Fiches F01 utilisées</li>
-        <li>Infractions détectées</li>
-        <li>Entreprises contrôlées</li>
-
-    </ul>
-
-</section>
-
-<!-- =========================
-    CONTRÔLE ADMIN
-========================= -->
-
-<section class="card">
-
-    <h2>⚙️ Administration InspecteurBot</h2>
-
-    <ul>
-
-        <li>➕ Ajouter utilisateur</li>
-        <li>❌ Bannir utilisateur</li>
-        <li>🔄 Réinitialiser compte</li>
-        <li>📊 Voir activité utilisateurs</li>
-
-    </ul>
-
-</section>
-
-<!-- =========================
-    ARCHIVES INSPECTEURBOT
-========================= -->
-
-<section class="card">
-
-    <h2>📁 Archives des Inspections</h2>
-
-    <p>Historique des fiches F01 à S03</p>
-
-    <div class="grid-2">
-
-        <div>
-            <label>Rechercher une fiche</label>
-            <input type="text" placeholder="F01, F02, S01...">
-        </div>
-
-        <div>
-            <label>Filtrer par entreprise</label>
-            <input type="text" placeholder="Nom entreprise">
-        </div>
-
-    </div>
-
-    <button>🔍 Rechercher dans les archives</button>
-
-</section>
-
-<!-- =========================
-    RAPPORT / PV AUTOMATIQUE
-========================= -->
-
-<section class="card">
-
-    <h2>📄 Génération de Rapport / PV</h2>
-
-    <p>Création automatique de procès-verbal d’inspection</p>
-
-    <textarea rows="6"
-        placeholder="Résumé de l’inspection..."></textarea>
-
-    <div class="grid-2">
-
-        <div>
-            <label>Type de rapport</label>
-            <select>
-                <option>Rapport d'inspection</option>
-                <option>Procès-verbal</option>
-                <option>Avertissement</option>
-                <option>Mise en demeure</option>
-            </select>
-        </div>
-
-        <div>
-            <label>Destinataire</label>
-            <input type="text" placeholder="Entreprise / Responsable">
-        </div>
-
-    </div>
-
-    <button>📄 Générer PDF</button>
-
-</section>
-
-<!-- =========================
-    STATISTIQUES AVANCÉES
-========================= -->
-
-<section class="card stats">
-
-    <h2>📊 Statistiques InspecteurBot</h2>
-
-    <div class="stat-grid">
-
-        <div class="stat">
-            <h3>📋 Inspections</h3>
-            <p>0</p>
-        </div>
-
-        <div class="stat">
-            <h3>⚖️ Infractions</h3>
-            <p>0</p>
-        </div>
-
-        <div class="stat">
-            <h3>🏢 Entreprises</h3>
-            <p>0</p>
-        </div>
-
-        <div class="stat">
-            <h3>👤 Inspecteurs</h3>
-            <p>0</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-    RECHERCHE HISTORIQUE
-========================= -->
-
-<section class="card">
-
-    <h2>🔍 Recherche intelligente</h2>
-
-    <input type="text"
-        placeholder="Rechercher dans toutes les inspections...">
-
-    <button>Rechercher</button>
-
-</section>
-
-<!-- =========================
-    MODULE INSPECTION FINAL
-========================= -->
-
-<section class="card">
-
-    <h2>⚖️ Inspection Officielle</h2>
-
-    <ul>
-
-        <li>✔ Contrôle Code du Travail</li>
-        <li>✔ Vérification SMIG</li>
-        <li>✔ CNSS / ONEM / INPP</li>
-        <li>✔ Sécurité des travailleurs</li>
-        <li>✔ Infractions et sanctions</li>
-
-    </ul>
-
-</section>
-
-<!-- =========================
-    IA AVANCÉE INSPECTEURBOT
-========================= -->
-
-<section class="card">
-
-    <h2>🤖 InspecteurBot IA PRO</h2>
-
-    <p>Analyse automatique du droit du travail congolais</p>
-
-    <textarea id="iaInput"
-        rows="5"
-        placeholder="Décrivez une situation juridique..."></textarea>
-
-    <div style="display:flex; gap:10px; margin-top:10px;">
-
-        <button onclick="analyserIA()">
-            ⚖️ Analyser
-        </button>
-
-        <button onclick="startVoice()">
-            🎤 Parler
-        </button>
-
-    </div>
-
-    <div id="iaResult" class="ia-box">
-        L’IA est prête à analyser les infractions.
-    </div>
-
-</section>
-
-<!-- =========================
-    VOIX & LECTURE IA
-========================= -->
-
-<section class="card">
-
-    <h2>🎤 Assistant Vocal InspecteurBot</h2>
-
-    <p>Parlez à InspecteurBot et écoutez les réponses</p>
-
-    <button onclick="startVoice()">
-        🎙️ Activer reconnaissance vocale
-    </button>
-
-    <button onclick="lireReponse()">
-        🔊 Lire la réponse
-    </button>
-
-</section>
-
-<!-- =========================
-    PDF / IMAGE UPLOAD
-========================= -->
-
-<section class="card">
-
-    <h2>📎 Analyse Documents (PDF / Image)</h2>
-
-    <p>InspecteurBot peut analyser des documents</p>
-
-    <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg">
-
-    <button onclick="analyserDocument()">
-        📄 Analyser document
-    </button>
-
-</section>
-
-<!-- =========================
-    OCR / LECTURE PV
-========================= -->
-
-<section class="card">
-
-    <h2>📸 Lecture de procès-verbal</h2>
-
-    <p>Analyse automatique des documents scannés</p>
-
-    <div id="ocrResult">
-        Aucun document analysé
-    </div>
-
-</section>
-
-<!-- =========================
-    MODE APPLICATION ANDROID
-========================= -->
-
-<section class="card">
-
-    <h2>📱 Application InspecteurBot</h2>
-
-    <ul>
-
-        <li>✔ Installation sur téléphone</li>
-        <li>✔ Mode hors ligne</li>
-        <li>✔ Notifications d’inspection</li>
-        <li>✔ Accès rapide au Code du Travail</li>
-
-    </ul>
-
-    <button onclick="installerApp()">
-        📲 Installer InspecteurBot
-    </button>
-
-</section>
-
-<!-- ===================================================== -->
-<!-- SECTION 5.16 - TABLEAU DE BORD INTELLIGENT -->
-<!-- ===================================================== -->
-
-<section id="smart-dashboard" class="section-card">
-
-<h2>📊 Tableau de Bord Intelligent</h2>
-
-<p>
-Le tableau de bord intelligent d'InspecteurBot offre une vue globale de toutes les activités de l'utilisateur.
-</p>
+<!-- ===========================
+     GRAPHIQUES
+=========================== -->
 
 <div class="dashboard-grid">
 
-<div class="dashboard-box">
-<h3>📂 Dossiers</h3>
-<p id="totalCases">0</p>
-</div>
+<div class="graph-box">
 
-<div class="dashboard-box">
-<h3>🟢 Dossiers Clôturés</h3>
-<p id="closedCases">0</p>
-</div>
+<h3>
 
-<div class="dashboard-box">
-<h3>🟡 En cours</h3>
-<p id="runningCases">0</p>
-</div>
+<i class="fa-solid fa-chart-pie"></i>
 
-<div class="dashboard-box">
-<h3>🔴 Prioritaires</h3>
-<p id="urgentCases">0</p>
-</div>
+Répartition des Infractions
+
+</h3>
+
+<canvas id="pieChart"></canvas>
 
 </div>
 
-</section>
+<div class="graph-box">
 
-<!-- ===================================================== -->
-<!-- SECTION 5.17 - NOTIFICATIONS -->
-<!-- ===================================================== -->
+<h3>
 
-<section id="notifications" class="section-card">
+<i class="fa-solid fa-chart-column"></i>
 
-<h2>🔔 Centre des Notifications</h2>
+Statistiques Mensuelles
 
-<ul id="notificationList">
+</h3>
 
-<li>Nouveau dossier enregistré.</li>
+<canvas id="barChart"></canvas>
 
-<li>Nouvelle preuve ajoutée.</li>
+</div>
 
-<li>Sauvegarde automatique réussie.</li>
+</div>
 
-<li>Synchronisation terminée.</li>
+<!-- ===========================
+     DERNIÈRES INSPECTIONS
+=========================== -->
 
-<li>Aucune alerte critique.</li>
+<div class="last-inspections">
 
-</ul>
+<h3>
 
-</section>
+<i class="fa-solid fa-clock-rotate-left"></i>
 
-<!-- ===================================================== -->
-<!-- SECTION 5.18 - JOURNAL D'AUDIT -->
-<!-- ===================================================== -->
+Dernières inspections
 
-<section id="auditLog" class="section-card">
-
-<h2>📑 Journal d'Audit</h2>
+</h3>
 
 <table>
 
@@ -679,29 +252,55 @@ Le tableau de bord intelligent d'InspecteurBot offre une vue globale de toutes l
 
 <tr>
 
+<th>Entreprise</th>
+
 <th>Date</th>
 
-<th>Utilisateur</th>
-
-<th>Action</th>
-
-<th>Résultat</th>
+<th>État</th>
 
 </tr>
 
 </thead>
 
-<tbody id="auditBody">
+<tbody>
 
 <tr>
 
-<td>---</td>
+<td>Société ABC SARL</td>
 
-<td>---</td>
+<td>21/05/2026</td>
 
-<td>---</td>
+<td class="ok">Conforme</td>
 
-<td>---</td>
+</tr>
+
+<tr>
+
+<td>Entreprise XYZ</td>
+
+<td>20/05/2026</td>
+
+<td class="danger">Non conforme</td>
+
+</tr>
+
+<tr>
+
+<td>ETS MOKILI</td>
+
+<td>19/05/2026</td>
+
+<td class="warning">À corriger</td>
+
+</tr>
+
+<tr>
+
+<td>FUTUR SARL</td>
+
+<td>18/05/2026</td>
+
+<td class="ok">Conforme</td>
 
 </tr>
 
@@ -709,183 +308,275 @@ Le tableau de bord intelligent d'InspecteurBot offre une vue globale de toutes l
 
 </table>
 
-</section>
+</div>
 
-<!-- ===================================================== -->
-<!-- SECTION 5.19 - GESTION DES RÔLES -->
-<!-- ===================================================== -->
+    </section>
 
-<section id="roles" class="section-card">
+<!-- ===========================
+     MENU PRINCIPAL
+=========================== -->
 
-<h2>👮 Gestion des Utilisateurs</h2>
+<section class="main-menu">
 
-<div class="roles-grid">
+<h2>
 
-<div>👑 Administrateur</div>
+<i class="fa-solid fa-table-cells-large"></i>
 
-<div>🛡 Superviseur</div>
+Menu Principal
 
-<div>👮 Inspecteur</div>
+</h2>
 
-<div>🕵 Enquêteur</div>
+<div class="menu-grid">
 
-<div>📈 Analyste</div>
+<div class="menu-card">
+<i class="fa-solid fa-house"></i>
+<h3>Accueil</h3>
+<p>Page principale de l'application.</p>
+</div>
 
-<div>📝 Secrétaire</div>
+<div class="menu-card">
+<i class="fa-solid fa-clipboard-check"></i>
+<h3>Fiches F01 à F07</h3>
+<p>Gestion des fiches d'inspection.</p>
+</div>
 
-<div>👤 Invité</div>
+<div class="menu-card">
+<i class="fa-solid fa-file-lines"></i>
+<h3>Fiches S01 à S03</h3>
+<p>Suivi des procédures spéciales.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-building-columns"></i>
+<h3>ONEM</h3>
+<p>Documents et déclarations.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-file-signature"></i>
+<h3>Procès-Verbaux</h3>
+<p>Création automatique des PV par IA.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-scale-balanced"></i>
+<h3>Code du Travail</h3>
+<p>Consultation rapide des articles.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<h3>Infractions</h3>
+<p>Articles, sanctions et amendes.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-robot"></i>
+<h3>Assistant IA</h3>
+<p>Poser une question à InspecteurBot.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-chart-column"></i>
+<h3>Statistiques</h3>
+<p>Rapports et analyses intelligentes.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-folder-open"></i>
+<h3>Archives</h3>
+<p>Consultation des anciens dossiers.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-users"></i>
+<h3>Utilisateurs</h3>
+<p>Gestion des comptes.</p>
+</div>
+
+<div class="menu-card">
+<i class="fa-solid fa-gear"></i>
+<h3>Paramètres</h3>
+<p>Configuration générale.</p>
+</div>
 
 </div>
 
 </section>
 
-<!-- ===================================================== -->
-<!-- SECTION 5.20 - SAUVEGARDE -->
-<!-- ===================================================== -->
+<!-- ===========================
+     DOSSIER INFRACTIONS
+=========================== -->
 
-<section id="backup" class="section-card">
+<section class="infractions">
 
-<h2>💾 Sauvegarde Automatique</h2>
+<h2>
 
-<button onclick="backupNow()">
+<i class="fa-solid fa-gavel"></i>
 
-Sauvegarder maintenant
+Infractions, Sanctions et Amendes
 
-</button>
+</h2>
 
-<p id="backupStatus">
+<div class="infractions-grid">
 
-Dernière sauvegarde : Jamais
+<div class="inf-card">
 
+<h3>Absence de contrat de travail</h3>
+
+<p>
+Article : À compléter selon le Code du Travail.
 </p>
+
+<p>
+Sanction : Selon les dispositions légales.
+</p>
+
+<p>
+Amende : Prévue par la loi.
+</p>
+
+<button>Voir les détails</button>
+
+</div>
+
+<div class="inf-card">
+
+<h3>Travail des enfants</h3>
+
+<p>
+Article : Code du Travail.
+</p>
+
+<p>
+Sanction prévue.
+</p>
+
+<p>
+Amende applicable.
+</p>
+
+<button>Voir les détails</button>
+
+</div>
+
+<div class="inf-card">
+
+<h3>Non-paiement du salaire</h3>
+
+<p>
+Article concerné.
+</p>
+
+<p>
+Sanction.
+</p>
+
+<p>
+Amende.
+</p>
+
+<button>Voir les détails</button>
+
+</div>
+
+<div class="inf-card">
+
+<h3>Heures supplémentaires illégales</h3>
+
+<p>
+Articles concernés.
+</p>
+
+<p>
+Sanction prévue.
+</p>
+
+<p>
+Montant de l'amende.
+</p>
+
+<button>Voir les détails</button>
+
+</div>
+
+<div class="inf-card">
+
+<h3>Hygiène et Sécurité</h3>
+
+<p>
+Infractions liées à la sécurité au travail.
+</p>
+
+<button>Consulter</button>
+
+</div>
+
+<div class="inf-card">
+
+<h3>Liberté syndicale</h3>
+
+<p>
+Infractions prévues par la législation.
+</p>
+
+<button>Consulter</button>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- ===================================================== -->
-<!-- SECTION 5.21 - SYNCHRONISATION -->
-<!-- ===================================================== -->
+<!-- ===========================
+     ASSISTANT IA
+=========================== -->
 
-<section id="sync" class="section-card">
+<section class="assistant">
 
-<h2>🌐 Synchronisation Temps Réel</h2>
+<h2>
+
+<i class="fa-solid fa-robot"></i>
+
+InspecteurBot IA
+
+</h2>
+
+<div class="assistant-box">
 
 <p>
 
-Etat :
+Bonjour Inspecteur 👋
 
-<span id="syncStatus">
-
-🟢 Connecté
-
-</span>
+Je peux vous aider à :
 
 </p>
 
-</section>
+<ul>
 
-<!-- ===================================================== -->
-<!-- SECTION 5.22 - RECHERCHE -->
-<!-- ===================================================== -->
+<li>Rédiger un Procès-Verbal.</li>
 
-<section id="searchEngine" class="section-card">
+<li>Rechercher un article du Code du Travail.</li>
 
-<h2>🔍 Recherche Intelligente</h2>
+<li>Calculer une amende.</li>
+
+<li>Trouver une infraction.</li>
+
+<li>Préparer une mission d'inspection.</li>
+
+<li>Analyser un dossier.</li>
+
+<li>Produire un rapport automatique.</li>
+
+</ul>
 
 <input
-
 type="text"
-
-id="searchInput"
-
-placeholder="Rechercher un dossier, une personne, une plaque..."
-
->
+placeholder="Posez votre question à InspecteurBot...">
 
 <button>
 
-Rechercher
-
-</button>
-
-</section>
-
-<!-- ===================================================== -->
-<!-- SECTION 5.23 - STATISTIQUES -->
-<!-- ===================================================== -->
-
-<section id="statistics" class="section-card">
-
-<h2>📈 Statistiques</h2>
-
-<canvas id="statisticsChart">
-
-</canvas>
-
-</section> 
-
-<!-- ===================================================== -->
-<!-- PARTIE 6 - INTELLIGENCE ARTIFICIELLE -->
-<!-- ===================================================== -->
-
-<section id="inspecteurbot-ai" class="section-card">
-
-<h2>🤖 InspecteurBot Intelligence Artificielle</h2>
-
-<p>
-Bienvenue dans le centre d'intelligence artificielle d'InspecteurBot.
-Cette IA assiste les inspecteurs dans leurs enquêtes,
-leurs analyses et la rédaction des rapports.
-</p>
-
-<div class="ai-grid">
-
-<div class="ai-card">
-<h3>🧠 Analyse des dossiers</h3>
-<p>L'IA peut analyser automatiquement les informations d'une enquête.</p>
-<button>Analyser</button>
-</div>
-
-<div class="ai-card">
-<h3>📑 Générer un rapport</h3>
-<p>Créer automatiquement un rapport professionnel.</p>
-<button>Générer</button>
-</div>
-
-<div class="ai-card">
-<h3>🔍 Recherche intelligente</h3>
-<p>Rechercher rapidement une personne, un dossier ou une preuve.</p>
-<button>Rechercher</button>
-</div>
-
-<div class="ai-card">
-<h3>💬 Assistant IA</h3>
-<p>Poser directement vos questions à InspecteurBot.</p>
-<button>Ouvrir</button>
-</div>
-
-</div>
-
-</section>
-
-<section class="section-card">
-
-<h2>💬 Assistant IA</h2>
-
-<div class="chat-container">
-
-<div id="chatMessages">
-
-<p><strong>InspecteurBot :</strong> Bonjour Inspecteur. Comment puis-je vous assister aujourd'hui ?</p>
-
-</div>
-
-<input
-type="text"
-id="chatInput"
-placeholder="Écrire votre question..."
->
-
-<button onclick="sendMessage()">
+<i class="fa-solid fa-paper-plane"></i>
 
 Envoyer
 
@@ -895,713 +586,213 @@ Envoyer
 
 </section>
 
-<section class="section-card">
+  <!-- ===========================
+     ACTUALITÉS IGT
+=========================== -->
 
-<h2>🧠 Analyse Automatique</h2>
+<section class="news-section">
 
-<button onclick="analyseCase()">
+<h2>
 
-Lancer l'analyse
+<i class="fa-solid fa-newspaper"></i>
 
-</button>
+Actualités de l'Inspection Générale du Travail
 
-<p id="analysisResult">
+</h2>
 
-Aucune analyse disponible.
+<div class="news-container">
 
-</p>
+<div class="news-card">
 
-</section>
+<i class="fa-solid fa-bullhorn"></i>
 
-<section class="section-card">
-
-<h2>📄 Génération Automatique des Rapports</h2>
-
-<button onclick="generateReport()">
-
-Créer le rapport
-
-</button>
-
-<textarea
-rows="10"
-id="reportArea"
-placeholder="Le rapport généré apparaîtra ici...">
-</textarea>
-
-</section>
-
-<section class="section-card">
-
-<h2>🌍 Traduction</h2>
-
-<select>
-
-<option>Français</option>
-
-<option>English</option>
-
-<option>Kiswahili</option>
-
-<option>Lingala</option>
-
-<option>Tshiluba</option>
-
-<option>Português</option>
-
-</select>
-
-<button>
-
-Traduire
-
-</button>
-
-</section>
-
-<section class="section-card">
-
-<h2>📂 Analyse des Documents</h2>
-
-<input type="file">
-
-<button>
-
-Analyser le document
-
-</button>
-
-</section>
-
-function sendMessage(){
-
-let input=document.getElementById("chatInput").value;
-
-if(input==="") return;
-
-let chat=document.getElementById("chatMessages");
-
-chat.innerHTML+=`
-<p><strong>Vous :</strong> ${input}</p>
-<p><strong>InspecteurBot :</strong>
-Votre demande a bien été reçue.
-L'analyse sera effectuée automatiquement.
-</p>
-`;
-
-document.getElementById("chatInput").value="";
-
-}
-
-function analyseCase(){
-
-document.getElementById("analysisResult").innerHTML=
-"✔ Analyse terminée. Aucune incohérence détectée dans le dossier.";
-
-}
-
-function generateReport(){
-
-document.getElementById("reportArea").value=
-
-"=============================\n"+
-"RAPPORT OFFICIEL\n"+
-"InspecteurBot\n"+
-"=============================\n\n"+
-
-"Date : "+new Date().toLocaleDateString()+"\n\n"+
-
-"Le rapport a été généré automatiquement par InspecteurBot.\n\n"+
-
-"Signature électronique validée.";
-
-}
-
-<!-- ===================================================== -->
-<!-- PARTIE 6 : INTELLIGENCE ARTIFICIELLE -->
-<!-- ===================================================== -->
-
-<section id="inspecteurbot-ai" class="section-card">
-
-<h2>🤖 InspecteurBot AI</h2>
+<h3>Nouvelle Circulaire</h3>
 
 <p>
-L'intelligence artificielle intégrée assiste les inspecteurs
-dans leurs enquêtes, leurs analyses et la génération
-automatique de rapports.
-</p>
 
-<div class="ai-grid">
-
-<div class="ai-card">
-<h3>🧠 Analyse</h3>
-<p>Analyse automatique d'un dossier.</p>
-<button onclick="analyseCase()">Analyser</button>
-</div>
-
-<div class="ai-card">
-<h3>📄 Rapport</h3>
-<p>Créer un rapport automatiquement.</p>
-<button onclick="generateReport()">Créer</button>
-</div>
-
-<div class="ai-card">
-<h3>🔎 Recherche IA</h3>
-<p>Recherche intelligente dans la base.</p>
-<button onclick="smartSearch()">Rechercher</button>
-</div>
-
-<div class="ai-card">
-<h3>💬 Assistant</h3>
-<p>Discussion avec InspecteurBot.</p>
-<button onclick="openAssistant()">Ouvrir</button>
-</div>
-
-</div>
-
-</section>
-
-<!-- Assistant IA -->
-
-<section class="section-card">
-
-<h2>💬 Assistant InspecteurBot</h2>
-
-<div id="chatMessages">
-
-<p><strong>InspecteurBot :</strong>
-Bonjour Inspecteur.
-Je suis prêt à vous assister.
-</p>
-
-</div>
-
-<input
-type="text"
-id="chatInput"
-placeholder="Écrivez votre question..."
->
-
-<button onclick="sendMessage()">
-
-Envoyer
-
-</button>
-
-</section>
-
-<!-- Analyse -->
-
-<section class="section-card">
-
-<h2>🧠 Analyse du dossier</h2>
-
-<button onclick="analyseCase()">
-
-Lancer l'analyse
-
-</button>
-
-<p id="analysisResult">
-
-Aucune analyse effectuée.
+Les inspecteurs sont invités à appliquer les nouvelles directives lors des contrôles.
 
 </p>
 
-</section>
+</div>
 
-<!-- Rapport -->
+<div class="news-card">
 
-<section class="section-card">
+<i class="fa-solid fa-calendar-days"></i>
 
-<h2>📄 Rapport automatique</h2>
-
-<button onclick="generateReport()">
-
-Générer
-
-</button>
-
-<textarea
-id="reportArea"
-rows="12"
-placeholder="Le rapport apparaîtra ici...">
-</textarea>
-
-    </section>
-
-function openAssistant(){
-
-alert("Assistant InspecteurBot ouvert.");
-
-}
-
-function smartSearch(){
-
-alert("Recherche intelligente en cours...");
-
-}
-
-function sendMessage(){
-
-let input=document.getElementById("chatInput").value;
-
-if(input=="") return;
-
-let chat=document.getElementById("chatMessages");
-
-chat.innerHTML+=`
+<h3>Programme des Missions</h3>
 
 <p>
 
-<strong>Vous :</strong>
+Consultez les missions planifiées pour cette semaine.
 
-${input}
+</p>
+
+</div>
+
+<div class="news-card">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<h3>Formation Continue</h3>
+
+<p>
+
+Une nouvelle formation sur les procédures d'inspection sera bientôt disponible.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     RACCOURCIS RAPIDES
+=========================== -->
+
+<section class="quick-access">
+
+<h2>
+
+<i class="fa-solid fa-bolt"></i>
+
+Accès Rapide
+
+</h2>
+
+<div class="quick-grid">
+
+<button class="quick-btn">
+
+<i class="fa-solid fa-file-circle-plus"></i>
+
+Nouvelle Inspection
+
+</button>
+
+<button class="quick-btn">
+
+<i class="fa-solid fa-file-signature"></i>
+
+Créer un PV
+
+</button>
+
+<button class="quick-btn">
+
+<i class="fa-solid fa-book"></i>
+
+Consulter le Code
+
+</button>
+
+<button class="quick-btn">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+Nouvelle Infraction
+
+</button>
+
+<button class="quick-btn">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+Recherche
+
+</button>
+
+<button class="quick-btn">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Statistiques
+
+</button>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     NOTIFICATIONS INTELLIGENTES
+=========================== -->
+
+<section class="smart-notification">
+
+<div id="smartMessage">
+
+💡 Bienvenue sur InspecteurBot IA.
+
+</div>
+
+</section>
+
+<!-- ===========================
+     BOUTON FLOTTANT IA
+=========================== -->
+
+<button id="floatingAI">
+
+<i class="fa-solid fa-robot"></i>
+
+</button>
+
+<!-- ===========================
+     PIED DE PAGE
+=========================== -->
+
+<footer>
+
+<div class="footer-content">
+
+<img src="images/logo-igt.png" class="footer-logo">
+
+<h3>
+
+Inspection Générale du Travail
+
+</h3>
+
+<p>
+
+InspecteurBot IA
 
 </p>
 
 <p>
 
-<strong>InspecteurBot :</strong>
-
-Votre demande est enregistrée.
+Assistant Intelligent des Inspecteurs du Travail
 
 </p>
 
-`;
+<hr>
 
-document.getElementById("chatInput").value="";
+<p>
 
-}
+Créé par
 
-function analyseCase(){
+<strong>
 
-document.getElementById("analysisResult").innerHTML=
+Inspecteur Limengo (Pmiller)
 
-"✔ Analyse terminée avec succès.<br><br>Aucune anomalie détectée.";
+</strong>
 
-}
+© 2026
 
-function generateReport(){
+</p>
 
-let report="";
-
-report+="==============================\n";
-
-report+="RAPPORT OFFICIEL\n";
-
-report+="InspecteurBot\n";
-
-report+="==============================\n\n";
-
-report+="Date : "+new Date().toLocaleDateString()+"\n\n";
-
-report+="Statut : Analyse terminée.\n";
-
-report+="Aucune anomalie détectée.\n\n";
-
-report+="Rapport généré automatiquement par InspecteurBot.";
-
-document.getElementById("reportArea").value=report;
-
-}
-
-<!-- ========================================= -->
-<!-- PARTIE 7.1 - NOUVEAU DOSSIER -->
-<!-- ========================================= -->
-
-<section id="case-management" class="section-card">
-
-<h2>📁 Nouveau Dossier d'Enquête</h2>
-
-<form id="caseForm">
-
-<label>Numéro du dossier</label>
-<input type="text" id="caseNumber" readonly>
-
-<label>Titre de l'affaire</label>
-<input type="text" id="caseTitle" placeholder="Titre de l'affaire">
-
-<label>Inspecteur responsable</label>
-<input type="text" id="caseInspector" placeholder="Nom de l'inspecteur">
-
-<label>Date</label>
-<input type="date" id="caseDate">
-
-<label>Lieu</label>
-<input type="text" id="caseLocation" placeholder="Lieu de l'incident">
-
-<label>Type d'affaire</label>
-
-<select id="caseType">
-
-<option>Vol</option>
-
-<option>Escroquerie</option>
-
-<option>Agression</option>
-
-<option>Accident</option>
-
-<option>Disparition</option>
-
-<option>Fraude</option>
-
-<option>Autre</option>
-
-</select>
-
-<label>Description</label>
-
-<textarea
-id="caseDescription"
-rows="6"
-placeholder="Décrire les faits...">
-</textarea>
-
-<label>Statut</label>
-
-<select id="caseStatus">
-
-<option>En cours</option>
-
-<option>Suspendu</option>
-
-<option>Clôturé</option>
-
-</select>
-
-<button type="button" onclick="saveCase()">
-
-💾 Enregistrer le dossier
-
-</button>
-
-</form>
-
-    </section>
-
- function generateCaseNumber(){
-
-const year=new Date().getFullYear();
-
-const random=Math.floor(Math.random()*9000)+1000;
-
-return "IB-"+year+"-"+random;
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-const num=document.getElementById("caseNumber");
-
-if(num){
-
-num.value=generateCaseNumber();
-
-}
-
-});
-
-function saveCase(){
-
-const title=document.getElementById("caseTitle").value;
-
-if(title==""){
-
-alert("Veuillez saisir le titre de l'affaire.");
-
-return;
-
-}
-
-alert("✅ Dossier enregistré avec succès !");
-
-document.getElementById("caseForm").reset();
-
-document.getElementById("caseNumber").value=generateCaseNumber();
-
-}   
-
-<!-- ========================================= -->
-<!-- PARTIE 7.2 : LISTE DES DOSSIERS -->
-<!-- ========================================= -->
-
-<section id="listeDossiers" class="section-card">
-
-<h2>📂 Liste des Dossiers</h2>
-
-<input
-type="text"
-id="searchCase"
-placeholder="🔍 Rechercher un dossier..."
-onkeyup="searchCase()">
-
-<br><br>
-
-<table id="caseTable">
-
-<thead>
-
-<tr>
-
-<th>N° Dossier</th>
-
-<th>Affaire</th>
-
-<th>Inspecteur</th>
-
-<th>Date</th>
-
-<th>Lieu</th>
-
-<th>Statut</th>
-
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody id="caseTableBody">
-
-</tbody>
-
-</table>
-
-</section>
-
-// ===============================
-// PARTIE 7.2
-// ===============================
-
-let dossiers=[];
-
-function saveCase(){
-
-const dossier={
-
-numero:document.getElementById("caseNumber").value,
-
-titre:document.getElementById("caseTitle").value,
-
-inspecteur:document.getElementById("caseInspector").value,
-
-date:document.getElementById("caseDate").value,
-
-lieu:document.getElementById("caseLocation").value,
-
-statut:document.getElementById("caseStatus").value
-
-};
-
-if(dossier.titre==""){
-
-alert("Veuillez saisir le titre.");
-
-return;
-
-}
-
-dossiers.push(dossier);
-
-displayCases();
-
-document.getElementById("caseForm").reset();
-
-document.getElementById("caseNumber").value=generateCaseNumber();
-
-}
-
-function displayCases(){
-
-let tbody=document.getElementById("caseTableBody");
-
-tbody.innerHTML="";
-
-dossiers.forEach((d,index)=>{
-
-tbody.innerHTML+=`
-
-<tr>
-
-<td>${d.numero}</td>
-
-<td>${d.titre}</td>
-
-<td>${d.inspecteur}</td>
-
-<td>${d.date}</td>
-
-<td>${d.lieu}</td>
-
-<td>${d.statut}</td>
-
-<td>
-
-<button onclick="viewCase(${index})">
-
-👁 Voir
-
-</button>
-
-<button onclick="deleteCase(${index})">
-
-🗑 Supprimer
-
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-}
-
-function deleteCase(index){
-
-if(confirm("Supprimer ce dossier ?")){
-
-dossiers.splice(index,1);
-
-displayCases();
-
-}
-
-}
-
-function viewCase(index){
-
-const d=dossiers[index];
-
-alert(
-
-"Numéro : "+d.numero+
-
-"\n\nAffaire : "+d.titre+
-
-"\n\nInspecteur : "+d.inspecteur+
-
-"\n\nDate : "+d.date+
-
-"\n\nLieu : "+d.lieu+
-
-"\n\nStatut : "+d.statut
-
-);
-
-}
-
-function searchCase(){
-
-let filtre=document.getElementById("searchCase").value.toLowerCase();
-
-let lignes=document.querySelectorAll("#caseTable tbody tr");
-
-lignes.forEach(row=>{
-
-let texte=row.innerText.toLowerCase();
-
-row.style.display=texte.includes(filtre)?"":"none";
-
-});
-
-} 
-
-#caseTable{
-
-width:100%;
-
-border-collapse:collapse;
-
-margin-top:20px;
-
-}
-
-#caseTable th{
-
-background:#0b6efd;
-
-color:white;
-
-padding:12px;
-
-}
-
-#caseTable td{
-
-padding:10px;
-
-border:1px solid #ddd;
-
-text-align:center;
-
-}
-
-#caseTable tr:nth-child(even){
-
-background:#f5f5f5;
-
-}
-
-#caseTable button{
-
-margin:2px;
-
-padding:6px 12px;
-
-border:none;
-
-border-radius:6px;
-
-cursor:pointer;
-
-}
-
-#searchCase{
-
-width:100%;
-
-padding:12px;
-
-border-radius:8px;
-
-border:1px solid #ccc;
-
-}    
-<!-- =========================
-    FOOTER OFFICIEL
-========================= -->
-
-<footer class="footer">
-
-    <p>
-        InspecteurBot - Inspection Générale du Travail (IGT) - RDC
-    </p>
-
-    <p>
-        Créé par <strong>Inspecteur Limengo (Pmiller) 2026</strong>
-    </p>
+</div>
 
 </footer>
-    
-function backupNow(){
 
-const now = new Date();
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-document.getElementById("backupStatus").innerHTML =
-"Dernière sauvegarde : " + now.toLocaleString();
+<script src="app.js"></script>
 
-alert("Sauvegarde effectuée avec succès.");
+</body>
 
-}
+</html>  
 
-setInterval(function(){
-
-document.getElementById("syncStatus").innerHTML =
-"🟢 Synchronisé";
-
-},5000);
