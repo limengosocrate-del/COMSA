@@ -23,18 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateTime(){
 
-        let now = new Date();
+let now = new Date();
 
-        let time = now.toLocaleTimeString();
+let heure = now.toLocaleTimeString("fr-FR");
 
-        let date = now.toLocaleDateString();
+let date = now.toLocaleDateString("fr-FR");
 
-        console.log("Heure :", time, "Date :", date);
-    }
+const clock=document.getElementById("clock");
 
-    setInterval(updateTime, 1000);
+if(clock){
 
-});
+clock.innerHTML=heure+"<br><small>"+date+"</small>";
+
+}
+
+}
 
 //
 // ===============================
@@ -62,33 +65,34 @@ links.forEach(link => {
 // ===============================
 //
 
-function notification(msg){
+function notification(message,type="info"){
 
-    let box = document.createElement("div");
+const notif=document.createElement("div");
 
-    box.innerText = msg;
+notif.className="notification-box";
 
-    box.style.position = "fixed";
+notif.innerHTML=message;
 
-    box.style.bottom = "20px";
+document.body.appendChild(notif);
 
-    box.style.right = "20px";
+setTimeout(()=>{
 
-    box.style.background = "#0056b3";
+notif.classList.add("show");
 
-    box.style.color = "white";
+},100);
 
-    box.style.padding = "15px";
+setTimeout(()=>{
 
-    box.style.borderRadius = "10px";
+notif.classList.remove("show");
 
-    box.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+setTimeout(()=>{
 
-    document.body.appendChild(box);
+notif.remove();
 
-    setTimeout(() => {
-        box.remove();
-    }, 3000);
+},500);
+
+},3500);
+
 }
 
 // test notification
@@ -152,3 +156,52 @@ notification("Bienvenue dans InspecteurBot RDC 🚀");
 notification("3 inspections sont programmées aujourd'hui.");
 
 }
+
+//==============================
+// MENU MOBILE
+//==============================
+
+const menuBtn=document.querySelector(".menu-btn");
+
+const sidebar=document.querySelector(".sidebar");
+
+if(menuBtn){
+
+menuBtn.onclick=function(){
+
+sidebar.classList.toggle("open");
+
+};
+
+}
+
+//==============================
+// ANIMATION DES STATISTIQUES
+//==============================
+
+document.querySelectorAll(".stat p").forEach(function(item){
+
+let cible=parseInt(item.innerText.replace(/ /g,""));
+
+let valeur=0;
+
+let interval=setInterval(function(){
+
+valeur+=Math.ceil(cible/40);
+
+if(valeur>=cible){
+
+valeur=cible;
+
+clearInterval(interval);
+
+}
+
+item.innerText=valeur.toLocaleString("fr-FR");
+
+},30);
+
+});   
+
+
+                          
